@@ -1,40 +1,40 @@
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import description from "../pages/ShowItems";
-import Footer from "../components/footer
+import Footer from "../components/footer";
 
 const Rotes = () => {
-  <switch>
+  <Switch>
     {/* Página Home */}
     <Route exact path="/">
-    <Footer/>
+      <Footer />
     </Route>
 
     {/* Página de Login */}
     <Route exact path="/Login">
-    <Footer/>
+      <Footer />
     </Route>
 
     {/* Página de Cadastro */}
     <Route exact path="/cadastro">
-    <Footer/>
+      <Footer />
     </Route>
 
     {/* Profile */}
     <Route exact path="/profile">
-    <Footer/>
+      <Footer />
     </Route>
 
     {/* Feed */}
     <Route exact path="/feed">
-    <Footer/>
+      <Footer />
     </Route>
 
     {/* Página de Descrição do Item */}
     <Route exact path="/description">
       <description />
-      <Footer/>
+      <Footer />
     </Route>
-  </switch>;
+  </Switch>;
 };
 
 export default Rotes;
