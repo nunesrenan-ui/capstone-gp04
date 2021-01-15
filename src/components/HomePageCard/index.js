@@ -3,7 +3,7 @@ import CardsIcons from "../CardsIcons/";
 import camiseta from "../../img/camiseta.png";
 import tv from "../../img/tv.png";
 import livro from "../../img/livro.png";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 const HomePageCard = () => {
   return (

@@ -1,6 +1,6 @@
 import CardSearch from "../../components/CardSearch";
 import CardItem from "../../components/CardItem";
-const Search = () => {
+const Feed = () => {
   return (
     <>
       <CardSearch />
@@ -9,4 +9,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Feed;
