@@ -7,10 +7,9 @@ import Routes from "./routes";
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <Routes></Routes>
       <Container>
         {/* <header></header> */}
-        <Routes></Routes>
         <footer>
           <a href="https://www.linkedin.com/in/adilson-dias-6a0a18170/">
             Adilson Dias
