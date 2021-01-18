@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import Profile from "../pages/Profile";
 import Description from "../pages/Description";
 import Feed from "../pages/Feed";
 import UserLogin from "../components/CardLogin";
@@ -21,7 +22,9 @@ const Routes = () => {
       </Route>
 
       {/* Profile */}
-      <Route exact path="/profile"></Route>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
 
       {/* Feed */}
       <Route exact path="/feed">
