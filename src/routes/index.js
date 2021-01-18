@@ -15,10 +15,14 @@ const Routes = () => {
       </Route>
 
       {/* Página de Login */}
-      <Route exact path="/login"></Route>
+      <Route exact path="/login">
+        <UserLogin></UserLogin>
+      </Route>
 
       {/* Página de Cadastro */}
-      <Route exact path="/cadastro"></Route>
+      <Route exact path="/cadastro">
+        <UserRegister></UserRegister>
+      </Route>
 
       {/* Profile */}
       <Route exact path="/profile">
