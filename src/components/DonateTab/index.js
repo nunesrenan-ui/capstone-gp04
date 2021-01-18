@@ -1,139 +1,139 @@
-import {
-  Box,
-  Button,
-  Form,
-  FormField,
-  RadioButtonGroup,
-  Select,
-  TextArea,
-  TextInput,
-} from "grommet";
+import { Box, Form, FormField, Button, TextArea, CheckBox } from "grommet";
+
+import { FormEdit } from "grommet-icons";
 
 import { useState } from "react";
 
-const DonateTab = () => {
-  const [donation, setDonation] = useState("");
-  const [brand, setBrand] = useState("");
-  const [size, setSize] = useState("");
-  const [model, setModel] = useState("");
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [comments, setComments] = useState("");
+import { Container } from "./style";
 
-  /*   const onFinish = (values) => {
+const DonateTab = () => {
+  const [cloth, setCloth] = useState({ check: true, value: "" });
+  const [book, setBook] = useState({ check: false, value: "" });
+  const [eletronic, setEletronic] = useState({ check: false, value: "" });
+
+  const [value, setValue] = useState({
+    brand: "",
+    model: "",
+    description: "",
+    size: "",
+    author: "",
+    title: "",
+  });
+
+  const onFinish = (values) => {
     console.log(values);
-    history.push('/login')
-     Testes da API, levar para a pagina de login depois.
-  }; */
+    //history.push('/login')
+    // Testes da API, levar para a pagina de login depois.
+  };
 
   return (
-    <Box round background="rgba(0, 0, 0, 0.7)" direction="row" pad="small">
+    <Box round background="rgba(0, 0, 0, 0.7)">
       <Form
-        onChange={(value) => console.log("Change", value)}
-        onReset={() => {
-          setDonation("");
-          setBrand("");
-          setSize("");
-          setModel("");
-          setComments("");
-        }}
-        onSubmit={(event) => console.log("Submit", event.value, event.touched)}
+        value={value}
+        onChange={(val) => setValue(val)}
+        onSubmit={({ value: val }) => onFinish(val)}
       >
-        <FormField name="donation" label="Tipo de Doação">
-          <RadioButtonGroup
+        <Box
+          direction="row"
+          pad="xsmall"
+          margin={{ left: "small", right: "small" }}
+        >
+          <FormField label="Tipo de doação">
+            <Container direction="row" pad="xsmall" margin={{ left: "small" }}>
+              <CheckBox
+                checked={cloth.check}
+                onChange={(event) => {
+                  setCloth({ check: event.target.checked, value: "vestuario" });
+                  setBook({ check: false, value: "" });
+                  setEletronic({ check: false, value: "" });
+                }}
+                label="Vestuário"
+              />
+              <CheckBox
+                checked={book.check}
+                onChange={(event) => {
+                  setBook({ check: event.target.checked, value: "livro" });
+                  setCloth({ check: false, value: "" });
+                  setEletronic({ check: false, value: "" });
+                }}
+                label="Livro"
+              />
+              <CheckBox
+                checked={eletronic.check}
+                onChange={(event) => {
+                  setEletronic({
+                    check: event.target.checked,
+                    value: "eletronico",
+                  });
+                  setBook({ check: false, value: "" });
+                  setCloth({ check: false, value: "" });
+                }}
+                label="Eletrônico"
+              />
+            </Container>
+          </FormField>
+        </Box>
+        {(cloth.check || eletronic.check) && (
+          <Box
             direction="row"
-            name="donation"
-            options={["Vestuário", "Livros", "Eletrônicos"]}
-            value={donation}
-            onChange={(event) => setDonation(event.target.value)}
-          />
-        </FormField>
-
-        {(donation === "Vestuário" || donation === "Eletrônicos") && (
-          <FormField label="Marca" name="brand">
-            <TextInput
-              name="brand"
-              value={brand}
-              onChange={(event) => setBrand(event.target.value)}
-            />
-          </FormField>
+            pad="xsmall"
+            margin={{ left: "small", right: "small" }}
+          >
+            <FormField label="Marca" name="brand" icon={<FormEdit />} />
+          </Box>
         )}
-
-        {donation === "Vestuário" && (
-          <FormField label="Tamanho" name="size">
-            <Select
-              name="size"
-              options={["P", "M", "G", "GG", "XGG"]}
-              value={size}
-              onChange={(event) => setSize(event.option)}
-            />
-          </FormField>
+        {eletronic.check && (
+          <Box
+            direction="row"
+            pad="xsmall"
+            margin={{ left: "small", right: "small" }}
+          >
+            <FormField label="Modelo" name="model" icon={<FormEdit />} />
+          </Box>
         )}
-
-        {donation === "Eletrônicos" && (
-          <FormField label="Modelo" name="model">
-            <TextInput
-              name="model"
-              value={model}
-              onChange={(event) => setModel(event.target.value)}
-            />
-          </FormField>
+        {cloth.check && (
+          <Box
+            direction="row"
+            pad="xsmall"
+            margin={{ left: "small", right: "small" }}
+          >
+            <FormField label="Tamanho" name="size" icon={<FormEdit />} />
+          </Box>
         )}
-
-        {donation === "Livros" && (
-          <Box>
-            <FormField label="Autor" name="author">
-              <TextInput
-                name="author"
-                value={author}
-                onChange={(event) => setAuthor(event.target.value)}
-              />
-            </FormField>
-            <FormField label="Título" name="title">
-              <TextInput
-                name="title"
-                value={title}
-                onChange={(event) => setTitle(event.target.value)}
-              />
-            </FormField>
+        {book.check && (
+          <Box
+            direction="row"
+            pad="xsmall"
+            margin={{ left: "small", right: "small" }}
+          >
+            <FormField label="Autor" name="author" icon={<FormEdit />} />
+          </Box>
+        )}
+        {book.check && (
+          <Box
+            direction="row"
+            pad="xsmall"
+            margin={{ left: "small", right: "small" }}
+          >
+            <FormField icon={<FormEdit />} label="Título" name="title" />
           </Box>
         )}
 
-        <FormField label="Foto Frontal" name="title">
-          <TextInput
-            name="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
+        <Box
+          direction="row"
+          pad="xsmall"
+          margin={{ left: "small", right: "small" }}
+        >
+          <FormField
+            label="Descrição"
+            name="description"
+            icon={<FormEdit />}
+            htmlFor="text-area"
+            component={TextArea}
           />
-        </FormField>
-
-        <FormField label="Foto Traseira" name="title">
-          <TextInput
-            name="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </FormField>
-
-        <FormField label="Foto Lateral" name="title">
-          <TextInput
-            name="title"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-          />
-        </FormField>
-
-        <FormField label="Descrição" name="comments">
-          <TextArea
-            name="comments"
-            value={comments}
-            onChange={(event) => setComments(event.target.value)}
-          />
-        </FormField>
-        <Box direction="row" justify="between" margin={{ top: "medium" }}>
-          <Button label="Cancel" />
-          <Button type="reset" label="Reset" />
-          <Button type="submit" label="Update" primary />
+        </Box>
+        <Box align="center" pad="small">
+          <Button primary label="Enviar" type="submit" />
         </Box>
       </Form>
     </Box>
