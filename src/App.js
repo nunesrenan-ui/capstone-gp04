@@ -1,3 +1,5 @@
+import "./App.css";
+import GlobalStyle from "./styles/global";
 // import "./App.css";
 import styled from "styled-components";
 import Routes from "./routes";
