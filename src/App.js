@@ -1,5 +1,4 @@
 import "./App.css";
-import HomePage from "./pages/Home/";
 import GlobalStyle from "./styles/global";
 // import "./App.css";
 import styled from "styled-components";
@@ -8,8 +7,7 @@ import Routes from "./routes";
 function App() {
   return (
     <>
-        <GlobalStyle />
-        <HomePage />
+      <GlobalStyle />
       <Container>
         {/* <header></header> */}
         <Routes></Routes>
