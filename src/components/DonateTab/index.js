@@ -7,6 +7,7 @@ import {
   Select,
   TextArea,
   TextInput,
+  DateInput,
 } from "grommet";
 
 import { useState } from "react";
@@ -121,6 +122,10 @@ const DonateTab = () => {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
+        </FormField>
+
+        <FormField label="Data para Sorteio">
+          <DateInput />
         </FormField>
 
         <FormField label="Descrição" name="comments">
