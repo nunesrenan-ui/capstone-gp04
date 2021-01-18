@@ -3,6 +3,8 @@ import Profile from "../pages/Profile";
 import Description from "../pages/Description";
 import Feed from "../pages/Feed";
 import HomePage from "../pages/Home/";
+import UserLogin from "../components/CardLogin/";
+import UserRegister from "../components/CardRegister/";
 
 const Routes = () => {
   return (

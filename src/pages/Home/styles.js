@@ -13,7 +13,7 @@ export const HomePageLayout = styled.div`
 `;
 
 export const ScrollDownHome = styled.div`
-  width: 100vw;
+  width: auto;
   max-width: 100%;
   min-height: 100vh;
   max-height: 100%;
