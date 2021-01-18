@@ -2,6 +2,8 @@ import { Route, Switch } from "react-router-dom";
 import Profile from "../pages/Profile";
 import Description from "../pages/Description";
 import Feed from "../pages/Feed";
+import UserLogin from "../components/CardLogin";
+import UserRegister from "../components/CardRegister";
 
 const Routes = () => {
   return (
@@ -10,10 +12,14 @@ const Routes = () => {
       <Route exact path="/"></Route>
 
       {/* Página de Login */}
-      <Route exact path="/Login"></Route>
+      <Route exact path="/login">
+        <UserLogin></UserLogin>
+      </Route>
 
       {/* Página de Cadastro */}
-      <Route exact path="/cadastro"></Route>
+      <Route exact path="/cadastro">
+        <UserRegister></UserRegister>
+      </Route>
 
       {/* Profile */}
       <Route exact path="/profile">
