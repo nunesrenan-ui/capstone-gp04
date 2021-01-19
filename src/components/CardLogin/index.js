@@ -10,11 +10,18 @@ import Footer from "../../components/Footer";
 
 import { MailOption, Hide, View, Lock, StatusGood } from "grommet-icons";
 
+import axios from "axios";
+
+import { useDispatch } from "react-redux";
+import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
+
 const UserLogin = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
   const [emailVal, setEmailVal] = useState(false);
   const [passwordVal, setPasswordVal] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
 
   const [value, setValue] = useState({
     email: "",
@@ -22,11 +29,19 @@ const UserLogin = () => {
   });
 
   const tryLogin = (values) => {
-    console.log(values);
-    //history.push('/perfil')
-    //validação do email e senha com a API
-    //inserir mensagem de erro depois,
-    //caso conta nao seja encontrada.(E-mail ou senha inválidos.)
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/login", {
+        ...values,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(dataLoginThunk(res.data));
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.log("erro", err);
+        setFailedLogin(!failedLogin);
+      });
   };
 
   return (
@@ -75,35 +90,12 @@ const UserLogin = () => {
               <Box align="center" justify="center">
                 {emailVal && <StatusGood />}
               </Box>
-            </Box>
-            <Box direction="row" pad="medium" margin={{ left: "large" }}>
-              <FormField
-                label="Senha"
-                name="password"
-                required
-                icon={<Lock />}
-                type={reveal ? "text" : "password"}
-                validate={[
-                  (password) => {
-                    if (password.length > 2) {
-                      setPasswordVal(true);
-                    }
-                    return undefined;
-                  },
-                ]}
-              />
-              <Box align="center" justify="center">
-                {passwordVal && <StatusGood />}
+              <Box align="center" pad="xsmall">
+                <Button primary label="Enviar" type="submit" />
               </Box>
-              <Button
-                icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
-                onClick={() => setReveal(!reveal)}
-              />
-            </Box>
-            <Box align="center" pad="xsmall">
-              <Button primary label="Enviar" type="submit" />
-            </Box>
-          </Form>
+              {failedLogin && <span>Login ou senha inválidos.</span>}
+            </Form>
+          </Box>
         </Box>
       </Box>
       <Footer />
