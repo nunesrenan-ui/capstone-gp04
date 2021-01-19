@@ -1,5 +1,10 @@
 //OBS : arrumar o required ( nao consigo mudar o texto)
 
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Footer from "../../components/Footer";
+
 import {
   Grommet,
   Box,
@@ -53,17 +58,27 @@ const UserRegister = (props) => {
   };
 
   return (
-    <Box align="center" justify="center">
-      <Box round background="rgba(0,0,0,0.5)" width="medium">
-        <Box
-          background="#FFC15E"
-          justify="center"
-          align="center"
-          round
-          pad={{ horizontal: "xsmall", vertical: "xsmall" }}
-        >
-          <h2>Registre-se</h2>
-        </Box>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
+      <Box round background="rgba(0, 0, 0, 0.7)">
+        {/* <Box
+        background="#FFC15E"
+        justify="center"
+        align="center"
+        round
+        pad={{ horizontal: "xsmall", vertical: "xsmall" }}
+      >
+        <h2>Registre-se</h2>
+      </Box> */}
+        <Header>
+          <div>
+            <Link to="/login">Já sou cadastrado</Link>
+          </div>
+        </Header>
         <Box
           background="rgba(0, 0, 0, 0)"
           align="center"
@@ -76,7 +91,7 @@ const UserRegister = (props) => {
             onChange={(val) => setValue(val)}
             onSubmit={({ value: val }) => onFinish(val)}
           >
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="Nome"
                 name="name"
@@ -98,7 +113,7 @@ const UserRegister = (props) => {
               </Box>
             </Box>
 
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="Sobrenome"
                 name="lastName"
@@ -118,7 +133,7 @@ const UserRegister = (props) => {
               </Box>
             </Box>
 
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="Telefone"
                 name="phone"
@@ -141,7 +156,7 @@ const UserRegister = (props) => {
               </Box>
             </Box>
 
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="E-mail"
                 name="email"
@@ -166,7 +181,7 @@ const UserRegister = (props) => {
               </Box>
             </Box>
 
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="Senha"
                 name="password"
@@ -195,7 +210,7 @@ const UserRegister = (props) => {
                 {passwordVal && <StatusGood />}
               </Box>
             </Box>
-            <Box direction="row" pad="medium" margin={{ left: "medium" }}>
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
               <FormField
                 label="Confirmar Senha"
                 name="confirmPassword"
@@ -221,8 +236,22 @@ const UserRegister = (props) => {
           </Form>
         </Box>
       </Box>
-    </Box>
+      <Footer />
+    </motion.div>
   );
 };
 
 export default UserRegister;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 5vh;
+  background-color: #ff9f1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
+`;

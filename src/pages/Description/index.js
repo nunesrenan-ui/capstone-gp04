@@ -1,13 +1,23 @@
 import styled from "styled-components";
-import ButtonHeader from "../../components/ButtonHeader";
-// import Header from "../../components/Header";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import Footer from "../../components/Footer";
 
 const Description = () => {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <Header>
-        <ButtonHeader text="Seja um doador"></ButtonHeader>
-        <ButtonHeader text="Login"></ButtonHeader>
+        <div>
+          <Link to="/cadastro">Seja um doador</Link>
+        </div>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
       </Header>
       <Container>
         <div>
@@ -29,8 +39,9 @@ const Description = () => {
         <Similares>
           <h2>Produtos Similares:</h2>
         </Similares>
+        <Footer></Footer>
       </Container>
-    </>
+    </motion.div>
   );
 };
 
@@ -68,11 +79,15 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  height: 5%;
+  height: 5vh;
   background-color: #ff9f1c;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
 `;
 
 export const StyledDescription = styled.div`
