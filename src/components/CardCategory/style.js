@@ -6,9 +6,9 @@ export const CardCategorys = styled.div`
   display: flex;
   flex-direction: row;
   padding-left: 10px;
-  margin-top: 0;
+  margin-top: 15px;
   /* background-color: #ccc; */
-  margin-left: 150px;
+  margin-left: -14px;
 `;
 
 export const CardItemCaterory = styled.div`
@@ -21,4 +21,11 @@ export const CardItemCaterory = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-left: 10px;
+
+  @media (max-width: 360px) {
+    display: none;
+  }
+  @media (max-width: 260px) {
+    display: none;
+  }
 `;

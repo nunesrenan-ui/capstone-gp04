@@ -2,7 +2,11 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Box, Form, FormField, TextInput, Button } from "grommet";
+import { motion } from "framer-motion";
+import Footer from "../../components/Footer";
 
 import { MailOption, Hide, View, Lock, StatusGood } from "grommet-icons";
 
@@ -26,11 +30,22 @@ const UserLogin = () => {
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <Box round background="rgba(0, 0, 0, 0.7)">
-        <Box background="#FFC15E" justify="center" align="center" round>
+        {/* <Box background="#FFC15E" justify="center" align="center" round>
           <h2>Login</h2>
-        </Box>
+        </Box> */}
+
+        <Header>
+          <div>
+            <Link to="/cadastro">Não é um Giver? Cadastre-se</Link>
+          </div>
+        </Header>
         <Box align="center" justify="center" pad="xsmall" round>
           <Form
             value={value}
@@ -91,8 +106,22 @@ const UserLogin = () => {
           </Form>
         </Box>
       </Box>
-    </>
+      <Footer />
+    </motion.div>
   );
 };
 
 export default UserLogin;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 5vh;
+  background-color: #ff9f1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
+`;
