@@ -12,11 +12,14 @@ const Profile = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1 }}
     >
       <Header>
         <div>
-          <Link to="/feed">Home</Link>
+          <Link to="/feed">Feed</Link>
+        </div>
+        <div>
+          <Link to="/">Logout</Link>
         </div>
       </Header>
       <Container>

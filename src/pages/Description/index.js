@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
+import React from "react";
+import { Carousel, Box, Image } from "grommet";
 
 const Description = () => {
   return (
@@ -9,7 +11,7 @@ const Description = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1 }}
     >
       <Header>
         <div>
@@ -19,9 +21,23 @@ const Description = () => {
           <Link to="/login">Login</Link>
         </div>
       </Header>
+
       <Container>
         <div>
-          <img src="https://a-static.mlcdn.com.br/1500x1500/camiseta-camisa-geek-os-simpsons-bart-simpson-100-algodao-atelier-do-silk/atelierdosilk/6967184652/9e5e2715572cd8d33c46f73bb932db3b.jpg" />
+          <Box height="small" width="medium" overflow="hidden">
+            <Box height="small" width="medium" overflow="hidden">
+              <Carousel fill>
+                <Image
+                  fit="cover"
+                  src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
+                />
+                <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
+                <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
+              </Carousel>
+            </Box>
+          </Box>
+        </div>
+        <div>
           <StyledDescription>
             <h1>Título</h1>
             <p>
@@ -39,8 +55,8 @@ const Description = () => {
         <Similares>
           <h2>Produtos Similares:</h2>
         </Similares>
-        <Footer></Footer>
       </Container>
+      <Footer></Footer>
     </motion.div>
   );
 };
@@ -48,15 +64,14 @@ const Description = () => {
 export default Description;
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 90%;
+  width: 100%;
+  height: 90vh;
   background-color: #ffc15e;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
 
-  div {
+  /* div {
     box-sizing: border-box;
     width: 70%;
     height: 60%;
@@ -65,16 +80,16 @@ export const Container = styled.div`
     margin-top: 2%;
     display: flex;
     align-items: center;
-  }
+  } */
 
-  img {
+  /* img {
     width: 35%;
     height: 80%;
     margin-left: 7%;
     padding: 0;
     border-radius: 50px;
     border: 2px solid #ff9f1c;
-  }
+  } */
 `;
 
 export const Header = styled.div`
@@ -119,6 +134,10 @@ export const StyledDescription = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    div {
+      background-color: white;
     }
   }
 
