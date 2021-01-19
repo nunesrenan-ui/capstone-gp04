@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Routes from "./routes";
+import { motion } from "framer-motion";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Container>
       <Routes></Routes>
-      <footer>
+      {/* <footer>
         <a href="https://www.linkedin.com/in/adilson-dias-6a0a18170/">
           Adilson Dias
         </a>
@@ -21,7 +23,8 @@ function App() {
         <a href="https://www.linkedin.com/in/renan-nunes-2538ab1b2/">
           Renan Nunes
         </a>
-      </footer>
+      </footer> */}
+      {/* <Footer /> */}
     </Container>
   );
 }
