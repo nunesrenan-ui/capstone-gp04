@@ -3,6 +3,8 @@ import CardItem from "../../components/CardItem";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { BodyPage } from "./style";
+
 const Feed = () => {
   return (
     <>
@@ -15,8 +17,10 @@ const Feed = () => {
           <Link to="/login">Login</Link>
         </div>
       </Header>
-      <CardSearch />
-      <CardItem />
+      <BodyPage>
+        <CardSearch />
+        <CardItem />
+      </BodyPage>
     </>
   );
 };
