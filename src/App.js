@@ -1,27 +1,12 @@
 import styled from "styled-components";
 import Routes from "./routes";
+import { motion } from "framer-motion";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Container>
       <Routes></Routes>
-      <footer>
-        <a href="https://www.linkedin.com/in/adilson-dias-6a0a18170/">
-          Adilson Dias
-        </a>
-        <a href="https://www.linkedin.com/in/amanda-gon%C3%A7alves-6a9a82a3/">
-          Amanda Gonçalves
-        </a>
-        <a href="https://www.linkedin.com/in/j%C3%BAlia-sperandio-b31493aa/">
-          Júlia Sperandio
-        </a>
-        <a href="https://www.linkedin.com/in/lucasfsilva2310/">
-          Lucas Ferreira
-        </a>
-        <a href="https://www.linkedin.com/in/renan-nunes-2538ab1b2/">
-          Renan Nunes
-        </a>
-      </footer>
     </Container>
   );
 }

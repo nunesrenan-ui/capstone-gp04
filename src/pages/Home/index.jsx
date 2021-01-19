@@ -3,10 +3,17 @@ import MenuBar from "../../components/MenuBar/";
 import { HomePageLayout, ScrollDownHome } from "./styles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
         <div>
@@ -118,7 +125,9 @@ const HomePage = () => {
           </div>
         </div>
       </ScrollDownHome>
-    </div>
+
+      <Footer />
+    </motion.div>
   );
 };
 
