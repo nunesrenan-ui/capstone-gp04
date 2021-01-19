@@ -15,6 +15,7 @@ const UserLogin = () => {
   const [reveal, setReveal] = useState(false);
   const [emailVal, setEmailVal] = useState(false);
   const [passwordVal, setPasswordVal] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
 
   const [value, setValue] = useState({
     email: "",
@@ -103,6 +104,7 @@ const UserLogin = () => {
             <Box align="center" pad="xsmall">
               <Button primary label="Enviar" type="submit" />
             </Box>
+            {failedLogin && <span>Login ou senha inválidos.</span>}
           </Form>
         </Box>
       </Box>
