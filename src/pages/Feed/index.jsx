@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 
+import { BodyPage, Header, DivContainer } from "./style";
+
 const Feed = () => {
   return (
     <motion.div
@@ -22,24 +24,13 @@ const Feed = () => {
           <Link to="/login">Login</Link>
         </div>
       </Header>
-      <CardSearch />
-      <CardItem />
+      <DivContainer>
+        <CardSearch />
+        <CardItem />
+      </DivContainer>
       <Footer />
     </motion.div>
   );
 };
 
 export default Feed;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 5vh;
-  background-color: #ff9f1c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  div {
-    margin: 0 1%;
-  }
-`;
