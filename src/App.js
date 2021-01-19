@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Routes from "./routes";
 
-
 function App() {
   return (
     <>
@@ -30,7 +29,7 @@ export default App;
 export const Footer = styled.footer`
   width: 100%;
   height: 4vh;
-  background-color: #FF9F1C;
+  background-color: #ff9f1c;
   display: flex;
   justify-content: space-around;
   align-items: center;
