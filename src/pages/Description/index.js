@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import ButtonHeader from "../../components/ButtonHeader";
-// import Header from "../../components/Header";
+import { Link } from "react-router-dom";
 
 const Description = () => {
   return (
     <>
       <Header>
-        <ButtonHeader text="Seja um doador"></ButtonHeader>
-        <ButtonHeader text="Login"></ButtonHeader>
+        <div>
+          <Link to="/cadastro">Seja um doador</Link>
+        </div>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
       </Header>
       <Container>
         <div>
@@ -68,11 +71,15 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  height: 5%;
+  height: 5vh;
   background-color: #ff9f1c;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
 `;
 
 export const StyledDescription = styled.div`
