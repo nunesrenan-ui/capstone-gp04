@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import HomePageCard from "../../components/HomePageCard";
-import MenuBar from "../../components/MenuBar";
-import AboutGiver from "../../components/AboutGiver";
-import { HomePageLayout } from "./styles";
-=======
 import HomePageCard from "../../components/HomePageCard/";
 import MenuBar from "../../components/MenuBar/";
 import { HomePageLayout, ScrollDownHome } from "./styles";
@@ -11,21 +5,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
->>>>>>> d070e3309de3e54fb5b00198d9bcc06ecb39c856
 
 const HomePage = () => {
  
 
   return (
-<<<<<<< HEAD
-    <div>
-      <MenuBar registerButton={"Seja um doador"} loginButton={"Login"}/>
-      <HomePageLayout>
-        <HomePageCard />
-      </HomePageLayout>
-      <AboutGiver />
-    </div>
-=======
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -146,7 +130,6 @@ const HomePage = () => {
 
       <Footer />
     </motion.div>
->>>>>>> d070e3309de3e54fb5b00198d9bcc06ecb39c856
   );
 };
 
