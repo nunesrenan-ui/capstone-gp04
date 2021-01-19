@@ -6,13 +6,14 @@ import {
   Phone,
   Hide,
   View,
+  Camera,
   Lock,
   StatusGood,
 } from "grommet-icons";
 
 import { useState } from "react";
 
-const ProfileEdit = (props) => {
+const ProfileEdit = () => {
   const [nameVal, setNameVal] = useState(false);
   const [lastNameVal, setLastNameVal] = useState(false);
   const [phoneVal, setPhoneVal] = useState(false);
@@ -25,6 +26,7 @@ const ProfileEdit = (props) => {
     lastName: "",
     phone: "",
     email: "",
+    profilePicture: "",
     password: "",
     confirmPassword: "",
   });
@@ -38,13 +40,13 @@ const ProfileEdit = (props) => {
   };
 
   return (
-    <Box round background="rgba(0, 0, 0, 0.7)">
+    <Box round background="rgba(0, 0, 0, 0.7)" pad="medium">
       <Form
         value={value}
         onChange={(val) => setValue(val)}
         onSubmit={({ value: val }) => onFinish(val)}
       >
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
           <FormField
             label="Nome"
             name="name"
@@ -65,7 +67,7 @@ const ProfileEdit = (props) => {
           </Box>
         </Box>
 
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
           <FormField
             label="Sobrenome"
             name="lastName"
@@ -85,7 +87,7 @@ const ProfileEdit = (props) => {
           </Box>
         </Box>
 
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
           <FormField
             label="Telefone"
             name="phone"
@@ -108,7 +110,7 @@ const ProfileEdit = (props) => {
           </Box>
         </Box>
 
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
           <FormField
             label="E-mail"
             name="email"
@@ -132,14 +134,21 @@ const ProfileEdit = (props) => {
           </Box>
         </Box>
 
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
+          <FormField
+            label="Foto de Perfil"
+            name="profilePicture"
+            icon={<Camera />}
+          />
+        </Box>
+
+        <Box direction="row">
           <FormField
             label="Senha"
             name="password"
             required
             icon={<Lock />}
             type={reveal ? "text" : "password"}
-            // Tentar aplicar mais obrigações a senha
             validate={[
               {
                 regexp: /[A-Z][0-9]+$/,
@@ -153,15 +162,17 @@ const ProfileEdit = (props) => {
               },
             ]}
           />
+
           <Button
-            icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
+            icon={reveal ? <View size="small" /> : <Hide size="small" />}
             onClick={() => setReveal(!reveal)}
           />
+
           <Box align="center" justify="center">
             {passwordVal && <StatusGood />}
           </Box>
         </Box>
-        <Box direction="row" pad="xsmall" margin={{ left: "small" }}>
+        <Box>
           <FormField
             label="Confirmar Senha"
             name="confirmPassword"
