@@ -28,17 +28,16 @@ const Description = () => {
           <section>
             <p>Termina em 01/01/2222</p>
           </section>
+
           <Box height="medium" width="large" overflow="hidden">
-            <Box height="medium" width="large" overflow="hidden">
-              <Carousel fill>
-                <Image
-                  fit="cover"
-                  src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
-                />
-                <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
-                <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
-              </Carousel>
-            </Box>
+            <Carousel fill>
+              <Image
+                fit="cover"
+                src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
+              />
+              <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
+              <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
+            </Carousel>
           </Box>
 
           <StyledDescription>
@@ -57,6 +56,7 @@ const Description = () => {
             </ButtonDiv>
           </StyledDescription>
         </Body>
+
         {/* <Similares>
           <h2>Produtos Similares:</h2>
         </Similares> */}
