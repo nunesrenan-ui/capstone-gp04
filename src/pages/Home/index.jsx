@@ -1,11 +1,21 @@
 import HomePageCard from "../../components/HomePageCard/";
 import MenuBar from "../../components/MenuBar/";
 import { HomePageLayout, ScrollDownHome } from "./styles";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <div>
-      <MenuBar />
+      <Header>
+        {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
+        <div>
+          <Link to="/cadastro">Seja um doador</Link>
+        </div>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
+      </Header>
       <HomePageLayout>
         <HomePageCard />
       </HomePageLayout>
@@ -100,7 +110,7 @@ const HomePage = () => {
               Gostou e quer saber mais? Então vem com a gente e torne-se um
               Giver!
             </p>
-            <br/>
+            <br />
             <p>
               <a href="linktoRegister">Clique aqui</a> e cadastre-se pra não
               perder nenhuma oportunidade!
@@ -113,3 +123,16 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 5vh;
+  background-color: #ff9f1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
+`;
