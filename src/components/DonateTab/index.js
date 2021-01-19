@@ -20,6 +20,7 @@ import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
   const [donation, setDonation] = useState("");
+  const [donationState, setDonationState] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [model, setModel] = useState("");
@@ -42,6 +43,7 @@ const DonateTab = () => {
 
   const [value, setValue] = useState({
     donation: "",
+    donationState: "",
     brand: "",
     model: "",
     author: "",
@@ -56,7 +58,10 @@ const DonateTab = () => {
     cep: "",
   });
 
+  console.log(value);
+
   const clear = () => {
+    setDonationState("");
     setBrand("");
     setSize("");
     setModel("");
@@ -67,6 +72,9 @@ const DonateTab = () => {
     setSide("");
     setTitle("");
     setAuthor("");
+    setState("");
+    setNumber("");
+    setCep("");
   };
 
   return (
@@ -78,7 +86,7 @@ const DonateTab = () => {
         }}
         onSubmit={(event) => console.log("Submit", event.value, event.touched)}
       >
-        <FormField name="donation" label="Tipo de Doação">
+        <FormField label="Tipo de Doação" name="donation">
           <RadioButtonGroup
             direction="row"
             name="donation"
@@ -133,6 +141,7 @@ const DonateTab = () => {
             </FormField>
             <FormField label="Título" name="title">
               <TextInput
+                required
                 name="title"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
@@ -140,6 +149,13 @@ const DonateTab = () => {
             </FormField>
           </Box>
         )}
+
+        <FormField label="Estado da Doação" name="donationState" required>
+          <Select
+            options={["Novo", "Semi-novo", "Usado"]}
+            name="donationState"
+          />
+        </FormField>
 
         <FormField label="Fotos">
           <PhotoContainer direction="row">
@@ -203,7 +219,7 @@ const DonateTab = () => {
                 placeholder="Estado"
                 options={brazilStates}
                 value={state}
-                onChange={(event) => setState(event.target.value)}
+                onChange={(event) => setState(event.value)}
               />
             </FormField>
           </Box>
