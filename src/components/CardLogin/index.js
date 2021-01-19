@@ -99,9 +99,16 @@ const UserLogin = () => {
               <Box align="center" pad="xsmall">
                 <Button primary label="Enviar" type="submit" />
               </Box>
-              {failedLogin && <span>Login ou senha inválidos.</span>}
-            </Form>
-          </Box>
+              <Button
+                icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
+                onClick={() => setReveal(!reveal)}
+              />
+            </Box>
+            <Box align="center" pad="xsmall">
+              <Button primary label="Enviar" type="submit" />
+            </Box>
+            {failedLogin && <span>Login ou senha inválidos.</span>}
+          </Form>
         </Box>
       </Box>
       <Footer />
