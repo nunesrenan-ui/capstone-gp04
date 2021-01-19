@@ -10,8 +10,14 @@ import Footer from "../../components/Footer";
 
 import { MailOption, Hide, View, Lock, StatusGood } from "grommet-icons";
 
+import axios from "axios";
+
+import { useDispatch } from "react-redux";
+import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
+
 const UserLogin = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
   const [emailVal, setEmailVal] = useState(false);
   const [passwordVal, setPasswordVal] = useState(false);
@@ -23,11 +29,19 @@ const UserLogin = () => {
   });
 
   const tryLogin = (values) => {
-    console.log(values);
-    //history.push('/perfil')
-    //validação do email e senha com a API
-    //inserir mensagem de erro depois,
-    //caso conta nao seja encontrada.(E-mail ou senha inválidos.)
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/login", {
+        ...values,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(dataLoginThunk(res.data));
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.log("erro", err);
+        setFailedLogin(!failedLogin);
+      });
   };
 
   return (
