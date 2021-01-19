@@ -1,30 +1,30 @@
 import styled from "styled-components";
 
-export const BodyPage = styled.div`
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+// export const BodyPage = styled.div`
+//   /* width: 100%;
+// height: 100%;
+// margin-left: auto;
+// margin-right: auto;
 
-  @media (max-width: 760px) {
-    width: 760px;
-  }
-  @media (max-width: 660px) {
-    width: 660px;
-  }
-  @media (max-width: 560px) {
-    width: 560px;
-  }
-  @media (max-width: 460px) {
-    width: 460px;
-  }
-  @media (max-width: 360px) {
-    width: 360px;
-  }
-  @media (max-width: 260px) {
-    width: 260px;
-  }
-`;
+// @media (max-width: 760px) {
+//   width: 760px;
+// }
+// @media (max-width: 660px) {
+//   width: 660px;
+// }
+// @media (max-width: 560px) {
+//   width: 560px;
+// }
+// @media (max-width: 460px) {
+//   width: 460px;
+// }
+// @media (max-width: 360px) {
+//   width: 360px;
+// }
+// @media (max-width: 260px) {
+//   width: 260px;
+// }
+//`; */
 
 export const Header = styled.div`
   width: 100%;
@@ -39,8 +39,16 @@ export const Header = styled.div`
   }
 `;
 
-export const DivContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 90vh;
-  /* background-color: #ffc15e; */
+  background-image: linear-gradient(#ffc15e, #f5ff90, #d6ffb7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const DivContainerCards = styled.div`
+  width: 100%;
+  height: 100%;
 `;
