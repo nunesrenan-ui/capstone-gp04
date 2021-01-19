@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 
+import { BodyPage } from "./style";
+
 const Feed = () => {
   return (
     <motion.div
@@ -22,10 +24,15 @@ const Feed = () => {
           <Link to="/login">Login</Link>
         </div>
       </Header>
-      <CardSearch />
-      <CardItem />
+
+  <BodyPage>
+        <CardSearch />
+        <CardItem />
+      </BodyPage>
+     
       <Footer />
     </motion.div>
+
   );
 };
 
