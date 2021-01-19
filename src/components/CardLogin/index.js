@@ -27,7 +27,7 @@ const UserLogin = () => {
 
   return (
     <>
-      <Box round background="rgba(0, 0, 0, 0.7)">
+      <Box round background="rgba(0, 0, 0, 0.5)">
         <Box background="#FFC15E" justify="center" align="center" round>
           <h2>Login</h2>
         </Box>

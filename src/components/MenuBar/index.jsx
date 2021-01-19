@@ -1,19 +1,13 @@
 import { MenuBarLayout } from "./styles";
 
-const MenuBar = () => {
+const MenuBar = ({ registerButton, loginButton }) => {
   return (
     <div>
       <MenuBarLayout>
-        <div className="appName">
-          Giver
-        </div>
+        <div className="appName">Giver</div>
         <ul>
-          <li>
-            Seja um doador
-          </li>
-          <li>
-            Login
-          </li>
+          <li>{registerButton}</li>
+          <li>{loginButton}</li>
         </ul>
       </MenuBarLayout>
     </div>
