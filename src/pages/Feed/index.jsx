@@ -13,7 +13,7 @@ const Feed = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1 }}
     >
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
@@ -25,8 +25,10 @@ const Feed = () => {
         </div>
       </Header>
       <DivContainer>
-        <CardSearch />
-        <CardItem />
+        <BodyPage>
+          <CardSearch />
+          <CardItem />
+        </BodyPage>
       </DivContainer>
       <Footer />
     </motion.div>
