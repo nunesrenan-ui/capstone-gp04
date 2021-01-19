@@ -15,14 +15,28 @@ export const Card = styled.div`
   margin-right: auto;
 `;
 export const CardTop = styled.div`
-  height: auto;
-  width: 80%;
+  height: 50px;
+  width: 100%;
   /* padding-bo: 10px; */
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-top: 10px;
-  margin-left: auto;
+  margin-left: 5px;
   margin-right: auto;
+  /* 
+  @media (max-width: 360px) {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  @media (max-width: 260px) {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  } */
 `;
 
 export const CardInput = styled.div`
