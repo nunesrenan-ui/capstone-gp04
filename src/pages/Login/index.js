@@ -1,14 +1,20 @@
-import { LoginLayout } from "./styles";
-import MenuBar from "../../components/MenuBar";
+import { LoginLayout, Header } from "./styles";
+import { Link } from "react-router-dom";
 import UserLogin from "../../components/CardLogin";
+import Footer from "../../components/Footer";
 
 const LoginPage = () => {
   return (
     <>
-      <MenuBar />
+      <Header>
+        <div>
+          <Link className="headerLinks" to="/cadastro">Não é um Giver? Cadastre-se</Link>
+        </div>
+      </Header>
       <LoginLayout>
         <UserLogin />
       </LoginLayout>
+      <Footer />
     </>
   );
 };
