@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Header, Button } from "grommet";
-import { Home, Login, Logout, Flows, User } from "grommet-icons";
+import { Home, Login, Logout, Flows, User, Clipboard } from "grommet-icons";
 import { Container } from "./style";
 
 export const HeaderAll = () => {
@@ -14,6 +14,13 @@ export const HeaderAll = () => {
           hoverIndicator
           title="Home"
           onClick={() => history.push("/")}
+        />
+
+        <Button
+          icon={<Clipboard />}
+          hoverIndicator
+          title="Cadastre-se"
+          onClick={() => history.push("/cadastro")}
         />
 
         <Button

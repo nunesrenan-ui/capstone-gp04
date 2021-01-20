@@ -13,6 +13,7 @@ import axios from "axios";
 
 import { useDispatch } from "react-redux";
 import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
+import { dataProductsThunk } from "../../store/modules/Products/thunks";
 
 const UserLogin = () => {
   const history = useHistory();
@@ -33,9 +34,13 @@ const UserLogin = () => {
         ...values,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res); // remover depois
         dispatch(dataLoginThunk(res.data));
-        history.push("/profile");
+        axios
+          .get("https://api-capstone-grupo04.herokuapp.com/produtos")
+          .then((res) => dispatch(dataProductsThunk(res.data)))
+          .catch((err) => console.log("produtos", err));
+        history.push("/feed");
       })
       .catch((err) => {
         console.log("erro", err);
