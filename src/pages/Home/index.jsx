@@ -7,6 +7,7 @@ import AboutGiver from "../../components/AboutGiver";
 import { Link } from "react-router-dom";
 import FooterAll from "../../components/Footer";
 import { motion } from "framer-motion";
+import HeaderAll from "../../components/Header";
 
 const HomePage = () => {
   return (
@@ -16,15 +17,16 @@ const HomePage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <Header>
-        {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-        <div>
-          <Link to="/cadastro">Seja um doador</Link>
-        </div>
-        <div>
-          <Link to="/login">Login</Link>
-        </div>
-      </Header>
+      {/* <Header>
+       
+      <div>
+        <Link to="/cadastro">Seja um doador</Link>
+      </div>
+      <div>
+        <Link to="/login">Login</Link>
+      </div>
+      </Header> */}
+      <HeaderAll></HeaderAll>
       <HomePageLayout>
         <HomePageCard />
       </HomePageLayout>
