@@ -20,21 +20,21 @@ export const HeaderAll = () => {
           icon={<Login />}
           hoverIndicator
           title="Login"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/login")}
         />
 
         <Button
           icon={<Flows />}
           hoverIndicator
           title="Feed"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/feed")}
         />
 
         <Button
           icon={<User />}
           hoverIndicator
           title="Meu perfil"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/profile")}
         />
 
         <Button
