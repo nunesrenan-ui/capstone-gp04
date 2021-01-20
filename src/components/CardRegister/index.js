@@ -1,6 +1,9 @@
 //OBS : arrumar o required ( nao consigo mudar o texto)
 
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Footer from "../../components/Footer";
 
 import {
   Grommet,
@@ -31,7 +34,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const requi = "*";
-
 const UserRegister = (props) => {
   const history = useHistory();
   const [nameVal, setNameVal] = useState(false);
@@ -69,23 +71,26 @@ const UserRegister = (props) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <Box round background="rgba(0, 0, 0, 0.5)" height="larger">
-        <Box
-        background="#FF9F1C"
+      <Box round background="rgba(0, 0, 0, 0.7)">
+        {/* <Box
+        background="#FFC15E"
         justify="center"
         align="center"
         round
         pad={{ horizontal: "xsmall", vertical: "xsmall" }}
       >
         <h2>Registre-se</h2>
-      </Box>
+      </Box> */}
+        <Header>
+          <div>
+            <Link to="/login">Já sou cadastrado</Link>
+          </div>
+        </Header>
         <Box
           background="rgba(0, 0, 0, 0)"
           align="center"
           justify="center"
           pad="xsmall"
-          height="medium
-          "
         >
           <Form
             value={value}
@@ -234,8 +239,22 @@ const UserRegister = (props) => {
           </Form>
         </Box>
       </Box>
+      <Footer />
     </motion.div>
   );
 };
 
 export default UserRegister;
+
+export const Header = styled.div`
+  width: 100%;
+  height: 5vh;
+  background-color: #ff9f1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  div {
+    margin: 0 1%;
+  }
+`;

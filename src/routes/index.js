@@ -3,8 +3,8 @@ import Profile from "../pages/Profile";
 import Description from "../pages/Description";
 import Feed from "../pages/Feed";
 import HomePage from "../pages/Home/";
-import LoginPage from "../pages/Login";
-import RegisterPage from "../pages/Register";
+import UserLogin from "../components/CardLogin/";
+import UserRegister from "../components/CardRegister/";
 import { AnimatePresence } from "framer-motion";
 
 const Routes = () => {
@@ -18,12 +18,12 @@ const Routes = () => {
 
         {/* Página de Login */}
         <Route exact path="/login">
-          <LoginPage />
+          <UserLogin></UserLogin>
         </Route>
 
         {/* Página de Cadastro */}
         <Route exact path="/cadastro">
-          <RegisterPage />
+          <UserRegister></UserRegister>
         </Route>
 
         {/* Profile */}
