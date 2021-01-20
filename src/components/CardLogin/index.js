@@ -45,18 +45,6 @@ const UserLogin = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <Box round background="rgba(0, 0, 0, 0.7)">
-        {/* <Box background="#FFC15E" justify="center" align="center" round>
-          <h2>Login</h2>
-        </Box> */}
-=======
     <>
       <motion.div
         initial={{ opacity: 0 }}
@@ -68,7 +56,6 @@ const UserLogin = () => {
           <Box background="#FFC15E" justify="center" align="center" round>
             <h2>Login</h2>
           </Box>
->>>>>>> requisicaoAPI/cadastro
 
           <Box
             align="center"
