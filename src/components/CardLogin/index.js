@@ -35,6 +35,7 @@ const UserLogin = () => {
       })
       .then((res) => {
         console.log(res);
+        window.localStorage.setItem("authToken", res.data.accessToken);
         dispatch(dataLoginThunk(res.data));
         history.push("/profile");
       })

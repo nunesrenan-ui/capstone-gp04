@@ -7,11 +7,12 @@ export const dataLoginThunk = (data) => {
     let decoded = jwt_decode(token);
     console.log("jwt: ", decoded);
     console.log("token: ", token);
-    let state = {
+    let dataLog = {
       token: token,
       data: jwt_decode(token),
     };
-    dispatch(dataLogin(state));
+    console.log("datalog", dataLog);
+    dispatch(dataLogin(dataLog));
   };
 };
 

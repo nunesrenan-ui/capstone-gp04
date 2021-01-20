@@ -1,18 +1,30 @@
-import { CardItemCaterory, CardCategorys } from "./style";
-import { Desktop } from "grommet-icons";
+import { CardItemCategory, CardCategorys } from "./style";
+import { Desktop, Book, Java, StreetView, Basket } from "grommet-icons";
 
 const CardCategory = () => {
   return (
-    <>
-      <CardCategorys>
-        <CardItemCaterory>
-          <Desktop />
-        </CardItemCaterory>
-        <CardItemCaterory>a</CardItemCaterory>
-        <CardItemCaterory>a</CardItemCaterory>
-        <CardItemCaterory>a</CardItemCaterory>
-      </CardCategorys>
-    </>
+    <CardCategorys>
+      <CardItemCategory>
+        <Desktop />
+        Eletrônicos
+      </CardItemCategory>
+      <CardItemCategory>
+        <Book />
+        Livros
+      </CardItemCategory>
+      <CardItemCategory>
+        <Java />
+        Objetos
+      </CardItemCategory>
+      <CardItemCategory>
+        <StreetView />
+        Roupas
+      </CardItemCategory>
+      <CardItemCategory>
+        <Basket />
+        Comidas
+      </CardItemCategory>
+    </CardCategorys>
   );
 };
 
