@@ -5,7 +5,7 @@ import HomePageCard from "../../components/HomePageCard";
 import AboutGiver from "../../components/AboutGiver";
 
 import { Link } from "react-router-dom";
-
+import FooterAll from "../../components/Footer";
 import { motion } from "framer-motion";
 
 const HomePage = () => {
@@ -19,14 +19,10 @@ const HomePage = () => {
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
         <div>
-          <Link className="headerLinks" to="/cadastro">
-            Seja um doador
-          </Link>
+          <Link to="/cadastro">Seja um doador</Link>
         </div>
         <div>
-          <Link className="headerLinks" to="/login">
-            Login
-          </Link>
+          <Link to="/login">Login</Link>
         </div>
       </Header>
       <HomePageLayout>
@@ -35,6 +31,7 @@ const HomePage = () => {
       <ScrollDownHome>
         <AboutGiver />
       </ScrollDownHome>
+      <FooterAll />
     </motion.div>
   );
 };
@@ -51,12 +48,5 @@ export const Header = styled.div`
 
   div {
     margin: 0 1.5%;
-  }
-
-  .headerLinks {
-    font-size: 20px;
-    color: black;
-    text-decoration: none;
-    padding: 15px;
   }
 `;

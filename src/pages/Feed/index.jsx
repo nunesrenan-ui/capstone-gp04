@@ -1,12 +1,12 @@
 import CardSearch from "../../components/CardSearch";
 import CardItem from "../../components/CardItem";
-
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-import Footer from "../../components/Footer";
+import FooterAll from "../../components/Footer";
 import { useEffect } from "react";
 import { Header, Container } from "./style";
 import { useSelector } from "react-redux";
+
 const Feed = () => {
   const history = useHistory();
   const checkToken = useSelector((state) => state.loginData.token);
@@ -37,7 +37,7 @@ const Feed = () => {
         </Header>
         <CardSearch />
         <CardItem />
-        <Footer />
+        <FooterAll />
       </Container>
     </motion.div>
   );

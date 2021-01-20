@@ -3,7 +3,7 @@ import ProfileTabs from "../../components/ProfileTabs/index.js";
 import { Container } from "./style";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
-import Footer from "../../components/Footer";
+import FooterAll from "../../components/Footer";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -44,7 +44,7 @@ const Profile = () => {
         />
         <ProfileTabs />
       </Container>
-      <Footer />
+      <FooterAll />
     </motion.div>
   );
 };
