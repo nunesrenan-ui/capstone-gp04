@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 
-import { Header, DivContainerCards, DivSearch, Container } from "./style";
+import { Header, Container } from "./style";
 
 const Feed = () => {
   return (
@@ -15,25 +15,20 @@ const Feed = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <Header>
-        {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-        <div>
-          <Link to="/cadastro">Seja um doador</Link>
-        </div>
-        <div>
-          <Link to="/login">Login</Link>
-        </div>
-      </Header>
-
       <Container>
+        <Header>
+          {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
+          <div>
+            <Link to="/cadastro">Seja um doador</Link>
+          </div>
+          <div>
+            <Link to="/login">Login</Link>
+          </div>
+        </Header>
         <CardSearch />
-
-        <DivContainerCards>
-          <CardItem />
-        </DivContainerCards>
+        <CardItem />
+        <Footer />
       </Container>
-
-      <Footer />
     </motion.div>
   );
 };
