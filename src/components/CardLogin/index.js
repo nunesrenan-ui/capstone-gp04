@@ -53,15 +53,10 @@ const UserLogin = () => {
         transition={{ duration: 2 }}
       >
         <Box round background="rgba(0, 0, 0, 0.7)">
-          {/* <Box background="#FFC15E" justify="center" align="center" round>
-          <h2>Login</h2>
-        </Box> */}
+          <Box background="#FFC15E" justify="center" align="center" round>
+            <h2>Login</h2>
+          </Box>
 
-          <Header>
-            <div>
-              <Link to="/cadastro">Não é um Giver? Cadastre-se</Link>
-            </div>
-          </Header>
           <Box
             align="center"
             justify="center"
@@ -128,7 +123,6 @@ const UserLogin = () => {
               <Box align="center" pad="xsmall">
                 <Button primary label="Enviar" type="submit" />
               </Box>
-              {failedLogin && <span>Login ou senha inválidos.</span>}
             </Form>
           </Box>
         </Box>
