@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Centerlayer from "../../components/Modal/index";
 
 import { HomePageLayout, ScrollDownHome } from "./styles";
 import HomePageCard from "../../components/HomePageCard";
@@ -7,8 +8,13 @@ import AboutGiver from "../../components/AboutGiver";
 import { Link } from "react-router-dom";
 import FooterAll from "../../components/Footer";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import CardLogin from "../../components/CardLogin";
+import CardRegister from "../../components/CardRegister";
 
 const HomePage = () => {
+  const [showContainer, setShowContainer] = useState(true);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,15 +25,22 @@ const HomePage = () => {
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
         <div>
-          <Link to="/cadastro">Seja um doador</Link>
+          <Centerlayer setShowContainer={setShowContainer} title="Login">
+            <CardLogin />
+          </Centerlayer>
+          {/* <Link to="/cadastro">Seja um doador</Link> */}
         </div>
         <div>
-          <Link to="/login">Login</Link>
+          <Centerlayer
+            setShowContainer={setShowContainer}
+            title="Seja um doador"
+          >
+            <CardRegister />
+          </Centerlayer>
+          {/* <Link to="/login">Login</Link> */}
         </div>
       </Header>
-      <HomePageLayout>
-        <HomePageCard />
-      </HomePageLayout>
+      <HomePageLayout>{showContainer && <HomePageCard />}</HomePageLayout>
       <ScrollDownHome>
         <AboutGiver />
       </ScrollDownHome>
