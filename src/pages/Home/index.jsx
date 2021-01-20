@@ -127,6 +127,10 @@ const HomePage = () => {
           </div>
         </div>
       </ScrollDownHome>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b856b40a5f069aa75752f1a6c86b4b606ee3075a
       <Footer />
     </motion.div>
   );

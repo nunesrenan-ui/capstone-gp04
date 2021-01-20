@@ -21,6 +21,7 @@ export const CardInput = styled.div`
   border-radius: 50px;
 `;
 
+<<<<<<< HEAD
 export const Btn = styled.button`
   height: 4vh;
   border: 2px solid white;
@@ -31,3 +32,15 @@ export const Btn = styled.button`
   font-size: 1.5em;
   margin: 1%;
 `;
+=======
+// export const Btn = styled.button`
+//   height: 4vh;
+//   border: 2px solid white;
+//   text-align: center;
+//   background-color: #ff9f1c;
+//   color: white;
+//   border-radius: 50px;
+//   font-size: 1.5em;
+//   margin: 1%;
+// `;
+>>>>>>> b856b40a5f069aa75752f1a6c86b4b606ee3075a
