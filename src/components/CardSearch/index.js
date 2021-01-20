@@ -1,19 +1,17 @@
 import CardCategory from "../../components/CardCategory";
 import { CustomSuggestions } from "../../components/SearchInput";
-import { SearchButton } from "../../components/SearchButton";
+// import { SearchButton } from "../../components/SearchButton";
 
-import { Card, CardInput, CardTop } from "./style";
+import { DivContainer, Btn } from "./style";
 
 const CartSearch = () => {
   return (
     <>
-      <Card>
-        <CardTop>
-          <CustomSuggestions />
-          <SearchButton />
-        </CardTop>
+      <DivContainer>
+        <CustomSuggestions />
+        <Btn>Buscar</Btn>
         <CardCategory />
-      </Card>
+      </DivContainer>
     </>
   );
 };
