@@ -30,6 +30,9 @@ import {
 import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
+
+import axios from "axios";
+
 const requi = "*";
 const UserRegister = (props) => {
   const history = useHistory();
@@ -52,9 +55,13 @@ const UserRegister = (props) => {
   const [reveal, setReveal] = useState(false);
 
   const onFinish = (values) => {
-    console.log(values);
-    //history.push('/login')
-    // Testes da API, levar para a pagina de login depois.
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/users", { ...values })
+      .then((res) => {
+        console.log(res);
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -188,12 +195,7 @@ const UserRegister = (props) => {
                 required
                 icon={<Lock />}
                 type={reveal ? "text" : "password"}
-                // Tentar aplicar mais obrigações a senha
                 validate={[
-                  {
-                    regexp: /[A-Z][0-9]+$/,
-                    message: "Ao menos uma letra maiúscula e um número.",
-                  },
                   (password) => {
                     if (password.length > 2) {
                       setPasswordVal(true);
@@ -221,6 +223,7 @@ const UserRegister = (props) => {
                   (confirmPassword) => {
                     if (confirmPassword === value.password) {
                       setConfirmPasswordVal(true);
+                      return;
                     }
                     return { message: "As senhas não estão iguais!" };
                   },
