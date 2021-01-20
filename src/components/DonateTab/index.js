@@ -1,3 +1,7 @@
+//ACTIONS
+import { addDonation } from "../../store/modules/AddDonation/actions";
+
+//GROMMET COMPONENTS
 import {
   Box,
   Button,
@@ -12,13 +16,20 @@ import {
 
 import { Camera } from "grommet-icons";
 
+//HOOKS
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
+//SOURCE DATA
 import { brazilStates } from "../../Source/index";
 
+//STYLES
 import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
+  const dispatch = useDispatch();
+
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
   const [brand, setBrand] = useState("");
@@ -58,8 +69,6 @@ const DonateTab = () => {
     cep: "",
   });
 
-  console.log(value);
-
   const clear = () => {
     setDonationState("");
     setBrand("");
@@ -75,6 +84,12 @@ const DonateTab = () => {
     setState("");
     setNumber("");
     setCep("");
+  };
+
+  const onSubmit = (value) => {
+    axios.post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
+      headers: { Authorization: `Bearer` },
+    });
   };
 
   return (
