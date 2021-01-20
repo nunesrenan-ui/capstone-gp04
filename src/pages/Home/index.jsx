@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
 
-const HomePage = () => { 
-
+const HomePage = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,10 +17,12 @@ const HomePage = () => {
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
         <div>
-          <Link to="/cadastro">Seja um doador</Link>
+          <Link className="headerLinks" to="/cadastro">
+            Seja um doador
+          </Link>
         </div>
         <div>
-          <Link to="/login">Login</Link>
+          <Link className="headerLinks" to="/login">Login</Link>
         </div>
       </Header>
       <HomePageLayout>
@@ -31,7 +32,7 @@ const HomePage = () => {
         <div id="section2">
           <AboutGiver />
         </div>
-       </ScrollDownHome> 
+      </ScrollDownHome>
       <Footer />
     </motion.div>
   );
@@ -48,6 +49,13 @@ export const Header = styled.div`
   align-items: center;
 
   div {
-    margin: 0 1%;
+    margin: 0 1.5%;
+  }
+
+  .headerLinks {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    padding: 15px;
   }
 `;
