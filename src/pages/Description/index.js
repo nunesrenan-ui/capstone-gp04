@@ -1,5 +1,6 @@
 import { Container, Body, Header, StyledDescription, ButtonDiv } from "./style";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import React from "react";
@@ -26,14 +27,7 @@ const Description = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <Header>
-          <div>
-            <Link to="/cadastro">Seja um doador</Link>
-          </div>
-          <div>
-            <Link to="/login">Login</Link>
-          </div>
-        </Header>
+        <HeaderAll />
 
         <Body>
           <h1>Carrinho de Mercado</h1>

@@ -1,10 +1,8 @@
-import styled from "styled-components";
-
 import { HomePageLayout, ScrollDownHome } from "./styles";
 import HomePageCard from "../../components/HomePageCard";
 import AboutGiver from "../../components/AboutGiver";
 
-import { Link } from "react-router-dom";
+import HeaderAll from "../../components/Header";
 import FooterAll from "../../components/Footer";
 import { motion } from "framer-motion";
 
@@ -16,15 +14,7 @@ const HomePage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <Header>
-        {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-        <div>
-          <Link to="/cadastro">Seja um doador</Link>
-        </div>
-        <div>
-          <Link to="/login">Login</Link>
-        </div>
-      </Header>
+      <HeaderAll></HeaderAll>
       <HomePageLayout>
         <HomePageCard />
       </HomePageLayout>
@@ -37,16 +27,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 5vh;
-  background-color: #ff9f1c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  div {
-    margin: 0 1.5%;
-  }
-`;

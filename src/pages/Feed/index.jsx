@@ -1,10 +1,11 @@
 import CardSearch from "../../components/CardSearch";
 import CardItem from "../../components/CardItem";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import { useEffect } from "react";
-import { Header, Container } from "./style";
+import { Container } from "./style";
 import { useSelector } from "react-redux";
 
 const Feed = () => {
@@ -27,15 +28,7 @@ const Feed = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <Header>
-          {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-          <div>
-            <Link to="/cadastro">Seja um doador</Link>
-          </div>
-          <div>
-            <Link to="/login">Login</Link>
-          </div>
-        </Header>
+        <HeaderAll />
         <CardSearch />
         <CardItem />
         <FooterAll />
