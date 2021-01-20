@@ -41,14 +41,9 @@ export const Header = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 90vh;
+  height: fit-content;
   background-image: linear-gradient(#ffc15e, #f5ff90, #d6ffb7);
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const DivContainerCards = styled.div`
-  width: 100%;
-  height: 100%;
 `;

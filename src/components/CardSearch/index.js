@@ -1,15 +1,13 @@
 import CardCategory from "../../components/CardCategory";
 import { CustomSuggestions } from "../../components/SearchInput";
-// import { SearchButton } from "../../components/SearchButton";
-
-import { DivContainer, Btn } from "./style";
+import { DivContainer } from "./style";
 
 const CartSearch = () => {
   return (
     <>
       <DivContainer>
         <CustomSuggestions />
-        <Btn>Buscar</Btn>
+        {/* <Btn>Buscar</Btn> */}
         <CardCategory />
       </DivContainer>
     </>

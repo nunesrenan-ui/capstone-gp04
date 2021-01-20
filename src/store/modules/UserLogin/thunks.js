@@ -15,11 +15,3 @@ export const dataLoginThunk = (data) => {
     dispatch(dataLogin(dataLog));
   };
 };
-
-// export const tokenLoginThunk = (data) => {
-//   return (dispatch, getState) => {
-//     let token = data.accessToken;
-//     console.log("token: ", token);
-//     dispatch(tokenLogin(token));
-//   };
-// };
