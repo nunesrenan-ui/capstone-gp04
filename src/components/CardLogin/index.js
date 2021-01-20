@@ -9,6 +9,7 @@ import { MailOption, Hide, Lock, View, StatusGood } from "grommet-icons";
 
 import axios from "axios";
 
+import Footer from "../Footer/index";
 import { useDispatch } from "react-redux";
 import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
 
@@ -50,15 +51,15 @@ const UserLogin = () => {
         transition={{ duration: 2 }}
       >
         <Box round background="rgba(0, 0, 0, 0.7)">
-          {/* <Box background="#FFC15E" justify="center" align="center" round>
-          <h2>Login</h2>
-        </Box> */}
+          <Box background="#FFC15E" justify="center" align="center" round>
+            <h2>Login</h2>
+          </Box>
 
-          <Header>
+          {/* <Header>
             <div>
               <Link to="/cadastro">Não é um Giver? Cadastre-se</Link>
             </div>
-          </Header>
+          </Header> */}
           <Box
             align="center"
             justify="center"
@@ -122,27 +123,27 @@ const UserLogin = () => {
                   />
                 </Box>
               </Box>
-            </Box>
-            <Box direction="row" pad="medium" margin={{ left: "large" }}>
-              <FormField
-                label="Senha"
-                name="password"
-                required
-                icon={<Lock />}
-                type={reveal ? "text" : "password"}
-                validate={[
-                  (password) => {
-                    if (passwordVal.length > 2) {
-                      setPasswordVal(true);
-                    }
-                    return undefined;
-                  },
-                ]}
-              />
-              <Box align="center" justify="center">
-                {emailVal && <StatusGood />}
+              <Box direction="row" pad="medium" margin={{ left: "large" }}>
+                <FormField
+                  label="Senha"
+                  name="password"
+                  required
+                  icon={<Lock />}
+                  type={reveal ? "text" : "password"}
+                  validate={[
+                    (password) => {
+                      if (passwordVal.length > 2) {
+                        setPasswordVal(true);
+                      }
+                      return undefined;
+                    },
+                  ]}
+                />
+                <Box align="center" justify="center">
+                  {emailVal && <StatusGood />}
+                </Box>
+                {failedLogin && <span>Login ou senha inválidos.</span>}
               </Box>
-              {failedLogin && <span>Login ou senha inválidos.</span>}
             </Form>
           </Box>
         </Box>

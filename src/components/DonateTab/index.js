@@ -18,7 +18,7 @@ import { Camera } from "grommet-icons";
 
 //HOOKS
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 //SOURCE DATA
@@ -29,6 +29,8 @@ import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.loginData);
+  console.log(userData);
 
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
@@ -86,7 +88,9 @@ const DonateTab = () => {
     setCep("");
   };
 
-  const onSubmit = (value) => {
+  const token = localStorage.getItem("authToken");
+
+  const onSubmit = () => {
     axios.post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
       headers: { Authorization: `Bearer` },
     });
