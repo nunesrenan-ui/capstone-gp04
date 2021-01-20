@@ -1,6 +1,3 @@
-//ACTIONS
-import { addDonation } from "../../store/modules/AddDonation/actions";
-
 //GROMMET COMPONENTS
 import {
   Box,
@@ -18,8 +15,8 @@ import { Camera } from "grommet-icons";
 
 //HOOKS
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 //SOURCE DATA
 import { brazilStates } from "../../Source/index";
@@ -28,9 +25,9 @@ import { brazilStates } from "../../Source/index";
 import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
-  const dispatch = useDispatch();
-  const userData = useSelector((state) => state.loginData);
-  console.log(userData);
+  const token = localStorage.getItem("authToken");
+  const data = jwt_decode(token);
+  const userId = Number(data.sub);
 
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
@@ -47,12 +44,6 @@ const DonateTab = () => {
   const [number, setNumber] = useState("");
   const [state, setState] = useState("");
   const [cep, setCep] = useState("");
-
-  /*   const onFinish = (values) => {
-    console.log(values);
-    history.push('/login')
-     Testes da API, levar para a pagina de login depois.
-  }; */
 
   const [value, setValue] = useState({
     donation: "",
@@ -88,22 +79,42 @@ const DonateTab = () => {
     setCep("");
   };
 
-  const token = localStorage.getItem("authToken");
-
   const onSubmit = () => {
-    axios.post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
-      headers: { Authorization: `Bearer` },
+    setValue({
+      donation: value.donation,
+      donationState: value.donationState,
+      brand: value.brand,
+      model: value.model,
+      author: value.author,
+      title: value.title,
+      description: value.description,
+      date: value.date,
+      frontSide: value.frontSide,
+      backSide: value.backSide,
+      side: value.side,
+      number: value.number,
+      state: value.state,
+      cep: value.cep,
+      userId: userId,
     });
+    console.log(value);
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
     <Box round background="rgba(0, 0, 0, 0.7)" direction="row" pad="medium">
       <Form
+        name="userId"
         onChange={(value) => setValue(value)}
         onReset={() => {
           clear();
         }}
-        onSubmit={(event) => console.log("Submit", event.value, event.touched)}
+        onSubmit={onSubmit}
       >
         <FormField label="Tipo de Doação" name="donation">
           <RadioButtonGroup
