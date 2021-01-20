@@ -11,8 +11,9 @@ import { useSelector } from "react-redux";
 const Feed = () => {
   const history = useHistory();
   const checkToken = useSelector((state) => state.loginData.token);
-  const products = useSelector((state) => state.products);
-  console.log("produtos: ", products); // remover depois
+  console.log("tokenPaginaFeed", checkToken);
+  const products = useSelector((state) => state.products); //variavel com array de produtos
+
   useEffect(() => {
     if (!checkToken) {
       history.push("/");

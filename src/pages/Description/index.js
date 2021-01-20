@@ -14,6 +14,7 @@ const Description = () => {
 
   useEffect(() => {
     if (!checkToken) {
+      console.log("token nao passou");
       history.push("/");
     }
   }, [checkToken]);

@@ -7,16 +7,20 @@ import FooterAll from "../../components/Footer";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useState } from "react";
 
 const Profile = () => {
   const history = useHistory();
   const checkToken = useSelector((state) => state.loginData.token);
+  console.log("tokenProfile", checkToken);
 
   useEffect(() => {
-    if (!checkToken) {
+    if (checkToken === undefined || checkToken === "") {
+      console.log("token nao passou");
       history.push("/");
     }
   }, [checkToken]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

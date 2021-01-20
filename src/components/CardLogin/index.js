@@ -34,12 +34,11 @@ const UserLogin = () => {
         ...values,
       })
       .then((res) => {
-        console.log(res); // remover depois
         dispatch(dataLoginThunk(res.data));
         axios
           .get("https://api-capstone-grupo04.herokuapp.com/produtos")
           .then((res) => dispatch(dataProductsThunk(res.data)))
-          .catch((err) => console.log("produtos", err));
+          .catch((err) => console.log(err));
         history.push("/feed");
       })
       .catch((err) => {
