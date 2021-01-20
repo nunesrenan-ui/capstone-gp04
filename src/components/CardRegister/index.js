@@ -1,5 +1,7 @@
 //OBS : arrumar o required ( nao consigo mudar o texto)
 
+import { motion } from "framer-motion";
+
 import {
   Grommet,
   Box,
@@ -26,6 +28,7 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 const requi = "*";
+
 const UserRegister = (props) => {
   const history = useHistory();
   const [nameVal, setNameVal] = useState(false);
@@ -53,9 +56,15 @@ const UserRegister = (props) => {
   };
 
   return (
-    <Box round background="rgba(0, 0, 0, 0.7)">
-      <Box
-        background="#FFC15E"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
+      <Box round background="rgba(0, 0, 0, 0.5)" height="larger">
+        <Box
+        background="#FF9F1C"
         justify="center"
         align="center"
         round
@@ -63,163 +72,166 @@ const UserRegister = (props) => {
       >
         <h2>Registre-se</h2>
       </Box>
-      <Box
-        background="rgba(0, 0, 0, 0)"
-        align="center"
-        justify="center"
-        pad="xsmall"
-      >
-        <Form
-          value={value}
-          validate="blur"
-          onChange={(val) => setValue(val)}
-          onSubmit={({ value: val }) => onFinish(val)}
+        <Box
+          background="rgba(0, 0, 0, 0)"
+          align="center"
+          justify="center"
+          pad="xsmall"
+          height="medium
+          "
         >
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="Nome"
-              name="name"
-              icon={<User />}
-              component={TextInput}
-              required="*"
-              validate={[
-                { regexp: /^[a-zA-Z]+$/i, message: "Somente letras." },
-                (name) => {
-                  if (name.length >= 3) {
-                    setNameVal(true);
-                  }
-                  return undefined;
-                },
-              ]}
-            />
-            <Box align="center" justify="center">
-              {nameVal && <StatusGood />}
+          <Form
+            value={value}
+            validate="blur"
+            onChange={(val) => setValue(val)}
+            onSubmit={({ value: val }) => onFinish(val)}
+          >
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="Nome"
+                name="name"
+                icon={<User />}
+                component={TextInput}
+                required="*"
+                validate={[
+                  { regexp: /^[a-zA-Z]+$/i, message: "Somente letras." },
+                  (name) => {
+                    if (name.length >= 3) {
+                      setNameVal(true);
+                    }
+                    return undefined;
+                  },
+                ]}
+              />
+              <Box align="center" justify="center">
+                {nameVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
 
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="Sobrenome"
-              name="lastName"
-              icon={<User />}
-              validate={[
-                { regexp: /^[a-zA-Z ]+$/i, message: "Somente letras." },
-                (lastName) => {
-                  if (lastName.length >= 2) {
-                    setLastNameVal(true);
-                  }
-                  return undefined;
-                },
-              ]}
-            />
-            <Box align="center" justify="center">
-              {lastNameVal && <StatusGood />}
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="Sobrenome"
+                name="lastName"
+                icon={<User />}
+                validate={[
+                  { regexp: /^[a-zA-Z ]+$/i, message: "Somente letras." },
+                  (lastName) => {
+                    if (lastName.length >= 2) {
+                      setLastNameVal(true);
+                    }
+                    return undefined;
+                  },
+                ]}
+              />
+              <Box align="center" justify="center">
+                {lastNameVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
 
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="Telefone"
-              name="phone"
-              icon={<Phone />}
-              validate={[
-                {
-                  regexp: /^[0-9]{10}$/i,
-                  message: "Somente números, dez dígitos",
-                },
-                (phone) => {
-                  if (phone.length === 10) {
-                    setPhoneVal(true);
-                  }
-                  return undefined;
-                },
-              ]}
-            />
-            <Box align="center" justify="center">
-              {phoneVal && <StatusGood />}
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="Telefone"
+                name="phone"
+                icon={<Phone />}
+                validate={[
+                  {
+                    regexp: /^[0-9]{10}$/i,
+                    message: "Somente números, dez dígitos",
+                  },
+                  (phone) => {
+                    if (phone.length === 10) {
+                      setPhoneVal(true);
+                    }
+                    return undefined;
+                  },
+                ]}
+              />
+              <Box align="center" justify="center">
+                {phoneVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
 
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="E-mail"
-              name="email"
-              icon={<MailOption />}
-              required
-              validate={[
-                {
-                  regexp: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/,
-                  placeholder: "exemplo@ex.com",
-                  message: "E-mail inválido.",
-                },
-                (email) => {
-                  if (email.length > 5) {
-                    setEmailVal(true);
-                  }
-                  return undefined;
-                },
-              ]}
-            />
-            <Box align="center" justify="center">
-              {emailVal && <StatusGood />}
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="E-mail"
+                name="email"
+                icon={<MailOption />}
+                required
+                validate={[
+                  {
+                    regexp: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/,
+                    placeholder: "exemplo@ex.com",
+                    message: "E-mail inválido.",
+                  },
+                  (email) => {
+                    if (email.length > 5) {
+                      setEmailVal(true);
+                    }
+                    return undefined;
+                  },
+                ]}
+              />
+              <Box align="center" justify="center">
+                {emailVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
 
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="Senha"
-              name="password"
-              required
-              icon={<Lock />}
-              type={reveal ? "text" : "password"}
-              // Tentar aplicar mais obrigações a senha
-              validate={[
-                {
-                  regexp: /[A-Z][0-9]+$/,
-                  message: "Ao menos uma letra maiúscula e um número.",
-                },
-                (password) => {
-                  if (password.length > 2) {
-                    setPasswordVal(true);
-                  }
-                  return undefined;
-                },
-              ]}
-            />
-            <Button
-              icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
-              onClick={() => setReveal(!reveal)}
-            />
-            <Box align="center" justify="center">
-              {passwordVal && <StatusGood />}
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="Senha"
+                name="password"
+                required
+                icon={<Lock />}
+                type={reveal ? "text" : "password"}
+                // Tentar aplicar mais obrigações a senha
+                validate={[
+                  {
+                    regexp: /[A-Z][0-9]+$/,
+                    message: "Ao menos uma letra maiúscula e um número.",
+                  },
+                  (password) => {
+                    if (password.length > 2) {
+                      setPasswordVal(true);
+                    }
+                    return undefined;
+                  },
+                ]}
+              />
+              <Button
+                icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
+                onClick={() => setReveal(!reveal)}
+              />
+              <Box align="center" justify="center">
+                {passwordVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
-          <Box direction="row" pad="medium" margin={{ left: "large" }}>
-            <FormField
-              label="Confirmar Senha"
-              name="confirmPassword"
-              required
-              icon={<Lock />}
-              type={reveal ? "text" : "password"}
-              validate={[
-                (confirmPassword) => {
-                  if (confirmPassword === value.password) {
-                    setConfirmPasswordVal(true);
-                  }
-                  return { message: "As senhas não estão iguais!" };
-                },
-              ]}
-            />
-            <Box align="center" justify="center">
-              {confirmPasswordVal && <StatusGood />}
+            <Box direction="row" pad="medium" margin={{ left: "large" }}>
+              <FormField
+                label="Confirmar Senha"
+                name="confirmPassword"
+                required
+                icon={<Lock />}
+                type={reveal ? "text" : "password"}
+                validate={[
+                  (confirmPassword) => {
+                    if (confirmPassword === value.password) {
+                      setConfirmPasswordVal(true);
+                    }
+                    return { message: "As senhas não estão iguais!" };
+                  },
+                ]}
+              />
+              <Box align="center" justify="center">
+                {confirmPasswordVal && <StatusGood />}
+              </Box>
             </Box>
-          </Box>
-          <Box align="center" pad="small">
-            <Button primary label="Enviar" type="submit" />
-          </Box>
-        </Form>
+            <Box align="center" pad="small">
+              <Button primary label="Enviar" type="submit" />
+            </Box>
+          </Form>
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 

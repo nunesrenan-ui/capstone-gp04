@@ -1,13 +1,13 @@
-import CardSearch from "../../components/CardSearch";
-import CardItem from "../../components/CardItem";
+import HomePageCard from "../../components/HomePageCard/";
+import AboutGiver from "../../components/AboutGiver";
+import { HomePageLayout, ScrollDownHome } from "./styles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
-import { BodyPage } from "./style";
+const HomePage = () => { 
 
-const Feed = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -24,19 +24,20 @@ const Feed = () => {
           <Link to="/login">Login</Link>
         </div>
       </Header>
-
-  <BodyPage>
-        <CardSearch />
-        <CardItem />
-      </BodyPage>
-     
+      <HomePageLayout>
+        <HomePageCard />
+      </HomePageLayout>
+      <ScrollDownHome>
+        <div id="section2">
+          <AboutGiver />
+        </div>
+       </ScrollDownHome> 
       <Footer />
     </motion.div>
-
   );
 };
 
-export default Feed;
+export default HomePage;
 
 export const Header = styled.div`
   width: 100%;

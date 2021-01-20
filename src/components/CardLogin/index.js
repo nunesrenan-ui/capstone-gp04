@@ -2,15 +2,23 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import { Box, Form, FormField, TextInput, Button } from "grommet";
+import { Box, Form, FormField, Button } from "grommet";
+import { motion } from "framer-motion";
 
-import { MailOption, Hide, View, Lock, StatusGood } from "grommet-icons";
+import { MailOption, Hide, Lock, View, StatusGood } from "grommet-icons";
+
+import axios from "axios";
+
+import { useDispatch } from "react-redux";
+import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
 
 const UserLogin = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [reveal, setReveal] = useState(false);
   const [emailVal, setEmailVal] = useState(false);
   const [passwordVal, setPasswordVal] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
 
   const [value, setValue] = useState({
     email: "",
@@ -18,20 +26,33 @@ const UserLogin = () => {
   });
 
   const tryLogin = (values) => {
-    console.log(values);
-    //history.push('/perfil')
-    //validação do email e senha com a API
-    //inserir mensagem de erro depois,
-    //caso conta nao seja encontrada.(E-mail ou senha inválidos.)
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/login", {
+        ...values,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(dataLoginThunk(res.data));
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.log("erro", err);
+        setFailedLogin(!failedLogin);
+      });
   };
 
   return (
-    <>
-      <Box round background="rgba(0, 0, 0, 0.7)">
-        <Box background="#FFC15E" justify="center" align="center" round>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
+      <Box round background="rgba(0, 0, 0, 0.5)">
+        <Box background="#FF9F1C" justify="center" align="center" round>
           <h2>Login</h2>
         </Box>
-        <Box align="center" justify="center" pad="xsmall" round>
+        <Box align="center" justify="center" pad="small" round>
           <Form
             value={value}
             onChange={(val) => setValue(val)}
@@ -45,7 +66,7 @@ const UserLogin = () => {
                 required
                 validate={[
                   {
-                    regexp: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/,
+                    regexp: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/,
                     placeholder: "exemplo@ex.com",
                     message: "E-mail inválido.",
                   },
@@ -70,7 +91,7 @@ const UserLogin = () => {
                 type={reveal ? "text" : "password"}
                 validate={[
                   (password) => {
-                    if (password.length > 2) {
+                    if (passwordVal.length > 2) {
                       setPasswordVal(true);
                     }
                     return undefined;
@@ -78,7 +99,7 @@ const UserLogin = () => {
                 ]}
               />
               <Box align="center" justify="center">
-                {passwordVal && <StatusGood />}
+                {emailVal && <StatusGood />}
               </Box>
               <Button
                 icon={reveal ? <View size="medium" /> : <Hide size="medium" />}
@@ -88,10 +109,11 @@ const UserLogin = () => {
             <Box align="center" pad="xsmall">
               <Button primary label="Enviar" type="submit" />
             </Box>
+            {failedLogin && <span>Login ou senha inválidos.</span>}
           </Form>
         </Box>
       </Box>
-    </>
+    </motion.div>
   );
 };
 
