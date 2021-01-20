@@ -1,11 +1,11 @@
 import CardSearch from "../../components/CardSearch";
 import CardItem from "../../components/CardItem";
-import styled from "styled-components";
+
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 
-import { BodyPage } from "./style";
+import { Header, DivContainerCards, DivSearch, Container } from "./style";
 
 const Feed = () => {
   return (
@@ -13,7 +13,7 @@ const Feed = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1 }}
     >
       <Header>
         {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
@@ -25,28 +25,17 @@ const Feed = () => {
         </div>
       </Header>
 
-  <BodyPage>
+      <Container>
         <CardSearch />
-        <CardItem />
-      </BodyPage>
-     
+
+        <DivContainerCards>
+          <CardItem />
+        </DivContainerCards>
+      </Container>
+
       <Footer />
     </motion.div>
-
   );
 };
 
 export default Feed;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 5vh;
-  background-color: #ff9f1c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  div {
-    margin: 0 1%;
-  }
-`;

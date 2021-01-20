@@ -17,7 +17,7 @@ export const Container = styled.div`
   height: 100vh;
 
   footer {
-    width: 100%;
+    width: 100%
     height: 5vh;
     background-color: #ff9f1c;
     display: flex;

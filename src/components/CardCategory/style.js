@@ -1,26 +1,24 @@
 import styled from "styled-components";
 
 export const CardCategorys = styled.div`
-  height: auto;
-  width: 50%;
+  height: 100%;
+  width: 90%;
   display: flex;
-  flex-direction: row;
-  padding-left: 10px;
-  margin-top: 15px;
-  /* background-color: #ccc; */
-  margin-left: -14px;
+  justify-content: center;
 `;
 
-export const CardItemCaterory = styled.div`
-  height: 3rem;
-  width: 3rem;
+export const CardItemCategory = styled.div`
+  height: 6vh;
+  width: fit-content;
   border: solid 1px #ccc;
   border-radius: 50%;
-  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin-left: 10px;
+  border: none;
+  color: white;
+  margin: 2%;
+  /* justify-content: center; */
+  /* padding: 3%; */
 
   @media (max-width: 360px) {
     display: none;
