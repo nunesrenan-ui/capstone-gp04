@@ -1,3 +1,4 @@
+//GROMMET COMPONENTS
 import { Box, Form, FormField, TextInput, Button } from "grommet";
 
 import {
@@ -11,15 +12,21 @@ import {
   StatusGood,
 } from "grommet-icons";
 
+//HOOKS
 import { useState } from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const ProfileEdit = () => {
+  const token = localStorage.getItem("authToken");
+  const data = jwt_decode(token);
+  const userId = Number(data.sub);
+
   const [nameVal, setNameVal] = useState(false);
   const [lastNameVal, setLastNameVal] = useState(false);
   const [phoneVal, setPhoneVal] = useState(false);
   const [emailVal, setEmailVal] = useState(false);
   const [passwordVal, setPasswordVal] = useState(false);
-  const [confirmPasswordVal, setConfirmPasswordVal] = useState(false);
 
   const [value, setValue] = useState({
     name: "",
@@ -28,107 +35,80 @@ const ProfileEdit = () => {
     email: "",
     profilePicture: "",
     password: "",
-    confirmPassword: "",
   });
+
+  const { name, lastName, phone, email, profilePicture, password } = value;
+
+  const checkData = () => {
+    if (name === "") {
+      delete value.name;
+    }
+    if (lastName === "") {
+      delete value.lastName;
+    }
+    if (phone === "") {
+      delete value.phone;
+    }
+    if (email === "") {
+      delete value.email;
+    }
+    if (profilePicture === "") {
+      delete value.profilePicture;
+    }
+    if (password === "") {
+      delete value.password;
+    }
+  };
+
+  checkData();
 
   const [reveal, setReveal] = useState(false);
 
-  const onFinish = (values) => {
-    console.log(values);
-    //history.push('/login')
-    // Testes da API, levar para a pagina de login depois.
+  const onSubmit = () => {
+    checkData();
+    axios
+      .patch(
+        `https://api-capstone-grupo04.herokuapp.com/users/${userId}`,
+        value,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
     <Box round background="rgba(0, 0, 0, 0.7)" pad="medium">
-      <Form
-        value={value}
-        onChange={(val) => setValue(val)}
-        onSubmit={({ value: val }) => onFinish(val)}
-      >
+      <Form value={value} onChange={(val) => setValue(val)} onSubmit={onSubmit}>
         <Box>
           <FormField
             label="Nome"
             name="name"
             icon={<User />}
             component={TextInput}
-            validate={[
-              { regexp: /^[a-zA-Z]+$/i, message: "Somente letras." },
-              (name) => {
-                if (name.length >= 3) {
-                  setNameVal(true);
-                }
-                return undefined;
-              },
-            ]}
-          />
+          ></FormField>
           <Box align="center" justify="center">
             {nameVal && <StatusGood />}
           </Box>
         </Box>
 
         <Box>
-          <FormField
-            label="Sobrenome"
-            name="lastName"
-            icon={<User />}
-            validate={[
-              { regexp: /^[a-zA-Z ]+$/i, message: "Somente letras." },
-              (lastName) => {
-                if (lastName.length >= 2) {
-                  setLastNameVal(true);
-                }
-                return undefined;
-              },
-            ]}
-          />
+          <FormField label="Sobrenome" name="lastName" icon={<User />} />
           <Box align="center" justify="center">
             {lastNameVal && <StatusGood />}
           </Box>
         </Box>
 
         <Box>
-          <FormField
-            label="Telefone"
-            name="phone"
-            icon={<Phone />}
-            validate={[
-              {
-                regexp: /^[0-9]{10}$/i,
-                message: "Somente números, dez dígitos",
-              },
-              (phone) => {
-                if (phone.length === 10) {
-                  setPhoneVal(true);
-                }
-                return undefined;
-              },
-            ]}
-          />
+          <FormField label="Telefone" name="phone" icon={<Phone />} />
           <Box align="center" justify="center">
             {phoneVal && <StatusGood />}
           </Box>
         </Box>
 
         <Box>
-          <FormField
-            label="E-mail"
-            name="email"
-            icon={<MailOption />}
-            validate={[
-              {
-                regexp: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/,
-                placeholder: "exemplo@ex.com",
-                message: "E-mail inválido.",
-              },
-              (email) => {
-                if (email.length > 5) {
-                  setEmailVal(true);
-                }
-                return undefined;
-              },
-            ]}
-          />
+          <FormField label="E-mail" name="email" icon={<MailOption />} />
           <Box align="center" justify="center">
             {emailVal && <StatusGood />}
           </Box>
@@ -146,21 +126,8 @@ const ProfileEdit = () => {
           <FormField
             label="Senha"
             name="password"
-            required
             icon={<Lock />}
             type={reveal ? "text" : "password"}
-            validate={[
-              {
-                regexp: /[A-Z][0-9]+$/,
-                message: "Ao menos uma letra maiúscula e um número.",
-              },
-              (password) => {
-                if (password.length > 2) {
-                  setPasswordVal(true);
-                }
-                return undefined;
-              },
-            ]}
           />
 
           <Button
@@ -170,26 +137,6 @@ const ProfileEdit = () => {
 
           <Box align="center" justify="center">
             {passwordVal && <StatusGood />}
-          </Box>
-        </Box>
-        <Box>
-          <FormField
-            label="Confirmar Senha"
-            name="confirmPassword"
-            required
-            icon={<Lock />}
-            type={reveal ? "text" : "password"}
-            validate={[
-              (confirmPassword) => {
-                if (confirmPassword === value.password) {
-                  setConfirmPasswordVal(true);
-                }
-                return { message: "As senhas não estão iguais!" };
-              },
-            ]}
-          />
-          <Box align="center" justify="center">
-            {confirmPasswordVal && <StatusGood />}
           </Box>
         </Box>
         <Box align="center" pad="small">
