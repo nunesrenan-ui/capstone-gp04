@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Box, Form, FormField, TextInput, Button } from "grommet";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
@@ -126,7 +125,6 @@ const UserLogin = () => {
             </Form>
           </Box>
         </Box>
-        <Footer />
       </motion.div>
     </>
   );

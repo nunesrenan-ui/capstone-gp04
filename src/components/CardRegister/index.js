@@ -3,7 +3,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Footer from "../../components/Footer";
 
 import {
   Grommet,
@@ -72,20 +71,16 @@ const UserRegister = (props) => {
       transition={{ duration: 1 }}
     >
       <Box round background="rgba(0, 0, 0, 0.7)">
-        {/* <Box
-        background="#FFC15E"
-        justify="center"
-        align="center"
-        round
-        pad={{ horizontal: "xsmall", vertical: "xsmall" }}
-      >
-        <h2>Registre-se</h2>
-      </Box> */}
-        <Header>
-          <div>
-            <Link to="/login">Já sou cadastrado</Link>
-          </div>
-        </Header>
+        <Box
+          background="#FFC15E"
+          justify="center"
+          align="center"
+          round
+          pad={{ horizontal: "xsmall", vertical: "xsmall" }}
+        >
+          <h2>Registre-se</h2>
+        </Box>
+
         <Box
           background="rgba(0, 0, 0, 0)"
           align="center"
@@ -239,7 +234,6 @@ const UserRegister = (props) => {
           </Form>
         </Box>
       </Box>
-      <Footer />
     </motion.div>
   );
 };
