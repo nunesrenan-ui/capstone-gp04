@@ -3,6 +3,7 @@ import { Search } from "grommet-icons";
 import { Box, Grommet, Image, Text, TextInput } from "grommet";
 import { grommet } from "grommet/themes";
 import { deepMerge } from "grommet/utils";
+import { useSelector } from "react-redux";
 
 // Type annotations can only be used in TypeScript files.
 // Remove ': ThemeType' if you are not using Typescript.
@@ -76,6 +77,9 @@ const folks = [
 ];
 
 export const CustomSuggestions = () => {
+  const productsData = useSelector((state) => state.products);
+  console.log(productsData);
+
   const [value, setValue] = useState("");
   const [suggestionOpen, setSuggestionOpen] = useState(false);
   const [suggestedFolks, setSuggestedFolks] = useState([]);
@@ -97,7 +101,7 @@ export const CustomSuggestions = () => {
       setSuggestedFolks([]);
     } else {
       // simulate an async call to the backend
-      setTimeout(() => setSuggestedFolks(folks), 300);
+      setTimeout(() => setSuggestedFolks(productsData), 300);
     }
   };
 
