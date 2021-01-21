@@ -7,18 +7,29 @@ import FooterAll from "../../components/Footer";
 import { useEffect } from "react";
 import { Container } from "./style";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { dataProductsThunk } from "../../store/modules/Products/thunks";
 
 const Feed = () => {
   const history = useHistory();
-  const checkToken = useSelector((state) => state.loginData.token);
-  console.log("tokenPaginaFeed", checkToken);
-  const products = useSelector((state) => state.products); //variavel com array de produtos
+  const dispatch = useDispatch();
+  // const checkToken = useSelector((state) => state.loginData.token);
+  const localToken = localStorage.getItem("authToken");
 
   useEffect(() => {
-    if (!checkToken) {
+    if (!localToken) {
       history.push("/");
     }
-  }, [checkToken]);
+  }, [localToken]);
+
+  useEffect(() => {
+    axios
+      .get("https://api-capstone-grupo04.herokuapp.com/produtos")
+      .then((res) => dispatch(dataProductsThunk(res.data)))
+      .catch((err) => console.log(err));
+  }, []);
+  const products = useSelector((state) => state.products); //variavel com array de produtos
 
   return (
     <motion.div

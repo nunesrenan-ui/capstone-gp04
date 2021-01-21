@@ -11,15 +11,13 @@ import { useState } from "react";
 
 const Profile = () => {
   const history = useHistory();
-  const checkToken = useSelector((state) => state.loginData.token);
-  console.log("tokenProfile", checkToken);
-
+  // const checkToken = useSelector((state) => state.loginData.token);
+  const localToken = localStorage.getItem("authToken");
   useEffect(() => {
-    if (checkToken === undefined || checkToken === "") {
-      console.log("token nao passou");
+    if (!localToken) {
       history.push("/");
     }
-  }, [checkToken]);
+  }, [localToken]);
 
   return (
     <motion.div

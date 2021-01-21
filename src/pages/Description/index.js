@@ -10,14 +10,14 @@ import { useEffect } from "react";
 
 const Description = () => {
   const history = useHistory();
-  const checkToken = useSelector((state) => state.loginData.token);
+  // const checkToken = useSelector((state) => state.loginData.token);
+  const localToken = localStorage.getItem("authToken");
 
   useEffect(() => {
-    if (!checkToken) {
-      console.log("token nao passou");
+    if (!localToken) {
       history.push("/");
     }
-  }, [checkToken]);
+  }, [localToken]);
 
   return (
     <motion.div
