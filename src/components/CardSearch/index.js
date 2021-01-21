@@ -1,9 +1,11 @@
 import CardCategory from "../../components/CardCategory";
 import CardItem from "../CardItem/index";
-
 import { DivContainer, CardInput, CardsContainer } from "./style";
-import { useSelector } from "react-redux";
+
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { productItemThunk } from "../../store/modules/Product/thunks";
 
 const CartSearch = () => {
   const productsData = useSelector((state) => state.products);
@@ -25,6 +27,14 @@ const CartSearch = () => {
   const findProduct = productsData.filter((item) =>
     item.nome.toLowerCase().includes(inputValue)
   );
+
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+  const moreInfo = (products) => {
+    dispatch(productItemThunk(products));
+    history.push("/description");
+  };
 
   //Usar quando a api estiver funcionando
   /*   const setFilter = productsData.filter((item) =>
@@ -52,8 +62,8 @@ const CartSearch = () => {
         />
       </DivContainer>
       <CardsContainer>
-        {findProduct.map(({ descricao, nome }) => (
-          <CardItem descricao={descricao} nome={nome} />
+        {findProduct.map((value, index) => (
+          <CardItem  key={index} descricao={value.descricao} nome={value.nome} imagem={value.imagem} info={() => moreInfo(value)} />
         ))}
       </CardsContainer>
     </>
