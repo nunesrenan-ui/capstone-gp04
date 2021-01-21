@@ -17,10 +17,8 @@ export const CardItemCategory = styled.div`
   border: none;
   color: white;
   margin: 2%;
-  /* justify-content: center; */
-  /* padding: 3%; */
 
-  @media (max-width: 360px) {
+  @media (max-width: 417px) {
     display: none;
   }
   @media (max-width: 260px) {
