@@ -57,4 +57,15 @@ export const CardBody = styled.div`
     color: black;
     text-align: left;
   }
+
+  button {
+    margin-top: 12%;
+    background-color: #ff9f1c;
+    padding: 8px;
+    border-radius: 20px;
+    border-color: #ff9f1c;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+  }
 `;

@@ -13,6 +13,8 @@ const Description = () => {
   // const checkToken = useSelector((state) => state.loginData.token);
   const localToken = localStorage.getItem("authToken");
 
+  const productItem = useSelector((state) => state.product);
+
   useEffect(() => {
     if (!localToken) {
       history.push("/");
@@ -30,34 +32,34 @@ const Description = () => {
         <HeaderAll />
 
         <Body>
-          <h1>Carrinho de Mercado</h1>
+          <h1>{productItem.nome}</h1>
           <section>
             <p>Termina em 01/01/2222</p>
           </section>
 
           <Box height="medium" width="large" overflow="hidden">
             <Carousel fill>
-              <Image
-                fit="cover"
-                src="//v2.grommet.io/assets/Wilderpeople_Ricky.jpg"
-              />
+              {productItem.imagem ? (
+                <img
+                  src={productItem.imagem}
+                  alt={`Foto ${productItem.nome}`}
+                />
+              ) : (
+                <h1>Sem foto</h1>
+              )}
               <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
               <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
             </Carousel>
           </Box>
 
           <StyledDescription>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              dapibus nisl eget dui tristique ornare. Etiam commodo ligula non
-              est feugiat egestas. Etiam quis molestie urna. Nullam vitae libero
-              ut sem gravida pharetra ac vitae massa.
-            </p>
-
+            <p>{productItem.descricao}</p>
+            <h3>Estado da doação: {productItem.estado}</h3>
+{/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
             <ButtonDiv>
               <button
                 style={{
-                  width: "fit-content",
+                  width: "30%",
                   fontSize: "20px",
                   backgroundColor: "gray",
                 }}
