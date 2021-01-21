@@ -31,8 +31,6 @@ const Feed = () => {
 
   //variavel com array de produtos
 
-
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -44,7 +42,6 @@ const Feed = () => {
         <HeaderAll />
         <CardSearch />
         <CardContainer></CardContainer>
-        <FooterAll />
       </Container>
       <FooterAll />
     </motion.div>
