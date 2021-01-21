@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "grommet";
 
 export const CardCategorys = styled.div`
   height: 100%;
@@ -7,8 +8,8 @@ export const CardCategorys = styled.div`
   justify-content: center;
 `;
 
-export const CardItemCategory = styled.div`
-  height: 6vh;
+export const CardItemCategory = styled(Button)`
+  height: 4vh;
   width: fit-content;
   border: solid 1px #ccc;
   border-radius: 50%;
@@ -16,7 +17,8 @@ export const CardItemCategory = styled.div`
   align-items: center;
   border: none;
   color: white;
-  margin: 2%;
+  margin: 2% 2% 0 2%;
+  font-size: 2em;
 
   @media (max-width: 417px) {
     display: none;

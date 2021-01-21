@@ -48,7 +48,7 @@ const UserLogin = () => {
           <h2>Login</h2>
         </CardHeader>
 
-        <Box align="center" justify="center" pad="xsmall" direction="column">
+        <Box align="center" justify="center" pad="large" direction="column">
           <Form
             value={value}
             onChange={(val) => setValue(val)}
@@ -105,7 +105,7 @@ const UserLogin = () => {
                 />
               </Box>
             </Box>
-            <Box align="center" pad="xsmall">
+            <Box align="center" pad="medium">
               <Button primary label="Enviar" type="submit" />
             </Box>
           </Form>

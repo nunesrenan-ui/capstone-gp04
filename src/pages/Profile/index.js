@@ -10,13 +10,13 @@ import HeaderAll from "../../components/Header";
 
 const Profile = () => {
   const history = useHistory();
-  // const checkToken = useSelector((state) => state.loginData.token);
+  /* const localToken = useSelector((state) => state.loginData.token); */
   const localToken = localStorage.getItem("authToken");
   useEffect(() => {
     if (!localToken) {
       history.push("/");
     }
-  }, [localToken]);
+  }, [localToken, history]);
 
   return (
     <motion.div

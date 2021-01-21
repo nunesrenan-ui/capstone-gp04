@@ -4,7 +4,7 @@ import hands from "../../img/hands.jpeg";
 export const HomePageLayout = styled.div`
   width: 100vw;
   max-width: 100%;
-  height: 100vh;
+  height: 95vh;
   top: 3vh;
   background-image: url(${hands});
   background-size: cover;
@@ -15,14 +15,14 @@ export const HomePageLayout = styled.div`
 
 export const ScrollDownHome = styled.div`
   width: auto;
-  /* max-width: 100%;
+  max-width: 100%;
   min-height: 100vh;
-  max-height: 100%; */
+  max-height: 100%;
   background-color: #d6ffb7;
   color: black;
   font-size: 25px;
   margin: 0;
-  padding: 20px;
+  padding: 2%;
   text-align: justify;
   justify-content: center;
   align-items: center;

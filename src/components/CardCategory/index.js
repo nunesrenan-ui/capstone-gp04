@@ -1,29 +1,21 @@
 import { CardItemCategory, CardCategorys } from "./style";
 import { Desktop, Book, StreetView } from "grommet-icons";
 
-const CardCategory = () => {
+const CardCategory = ({ onClickEletronic, onClickBooks, onClickClothes }) => {
   return (
     <CardCategorys>
-      <CardItemCategory>
+      <CardItemCategory onClick={onClickEletronic}>
         <Desktop />
         Eletrônicos
       </CardItemCategory>
-      <CardItemCategory>
+      <CardItemCategory onClick={onClickBooks}>
         <Book />
         Livros
       </CardItemCategory>
-      {/* <CardItemCategory>
-        <Java />
-        Objetos
-      </CardItemCategory> */}
-      <CardItemCategory>
+      <CardItemCategory onClick={onClickClothes}>
         <StreetView />
         Vestuários
       </CardItemCategory>
-      {/* <CardItemCategory>
-        <Basket />
-        Comidas
-      </CardItemCategory> */}
     </CardCategorys>
   );
 };

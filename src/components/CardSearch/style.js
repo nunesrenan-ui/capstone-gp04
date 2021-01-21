@@ -18,11 +18,20 @@ export const DivContainer = styled.div`
   padding: 2%;
 `;
 
-export const CardInput = styled.div`
+export const CardInput = styled.input`
   height: 50px;
   width: 70%;
   background-color: white;
   border-radius: 50px;
+`;
+
+export const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 1030px;
+  height: 100%;
 `;
 
 // export const Btn = styled.button`

@@ -14,6 +14,6 @@ export const CardContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  flex-wrap: wrap;  
-`
+  width: 90vh;
+  flex-wrap: wrap;
+`;

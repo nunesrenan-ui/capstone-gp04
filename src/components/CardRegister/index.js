@@ -65,7 +65,7 @@ const UserRegister = () => {
         <h2>Registre-se</h2>
       </CardHeader>
 
-      <Box align="center" justify="center" pad="small">
+      <Box align="center" justify="center" pad="large">
         <Form
           value={value}
           validate="blur"
