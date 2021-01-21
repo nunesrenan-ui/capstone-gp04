@@ -9,7 +9,7 @@ export const CardCategorys = styled.div`
 `;
 
 export const CardItemCategory = styled(Button)`
-  height: 6vh;
+  height: 4vh;
   width: fit-content;
   border: solid 1px #ccc;
   border-radius: 50%;
@@ -17,11 +17,10 @@ export const CardItemCategory = styled(Button)`
   align-items: center;
   border: none;
   color: white;
-  margin: 2%;
-  /* justify-content: center; */
-  /* padding: 3%; */
+  margin: 2% 2% 0 2%;
+  font-size: 2em;
 
-  @media (max-width: 360px) {
+  @media (max-width: 417px) {
     display: none;
   }
   @media (max-width: 260px) {

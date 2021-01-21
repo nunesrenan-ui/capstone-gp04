@@ -4,9 +4,10 @@ import hands from "../../img/hands.jpeg";
 export const HomePageLayout = styled.div`
   width: 100vw;
   max-width: 100%;
-  height: 100vh;
+  height: 95vh;
   top: 3vh;
   background-image: url(${hands});
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +22,7 @@ export const ScrollDownHome = styled.div`
   color: black;
   font-size: 25px;
   margin: 0;
-  padding: 20px;
+  padding: 2%;
   text-align: justify;
   justify-content: center;
   align-items: center;
@@ -50,6 +51,6 @@ export const ScrollDownHome = styled.div`
 
   a {
     text-decoration: none;
-    color:  #f5ff90;
+    color: #f5ff90;
   }
 `;

@@ -1,5 +1,5 @@
 import { CardItemCategory, CardCategorys } from "./style";
-import { Desktop, Book, Java, StreetView, Basket } from "grommet-icons";
+import { Desktop, Book, StreetView } from "grommet-icons";
 
 const CardCategory = ({ onClickEletronic, onClickBooks, onClickClothes }) => {
   return (
@@ -14,7 +14,7 @@ const CardCategory = ({ onClickEletronic, onClickBooks, onClickClothes }) => {
       </CardItemCategory>
       <CardItemCategory onClick={onClickClothes}>
         <StreetView />
-        Roupas
+        Vestuários
       </CardItemCategory>
     </CardCategorys>
   );

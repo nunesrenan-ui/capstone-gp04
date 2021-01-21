@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const DivContainer = styled.div`
+  @media (max-width: 521px) {
+    width: 80%;
+  }
+
   box-sizing: border-box;
   height: 30%;
-  width: 70%;
+  width: 60%;
   background-color: #ff9f1c;
   border-radius: 50px;
   display: flex;
@@ -11,7 +15,7 @@ export const DivContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2% 0;
-  padding-top: 2%;
+  padding: 2%;
 `;
 
 export const CardInput = styled.input`

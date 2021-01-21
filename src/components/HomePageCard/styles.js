@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const HomePageCardLayout = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
-  width: 777px;
-  height: 455px;
-  left: 331px;
-  top: 270px;
-  border-radius: 40px;
+  width: 70%;
+  height: 60vh;
+  /* left: 331px;*/
+  /* top: 270px; */
+  margin: 0 auto;
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -16,17 +17,19 @@ export const HomePageCardLayout = styled.div`
 export const IconsContainer = styled.div`
   width: 100%;
   display: flex;
+  margin-top: 10%;
+  /* padding: 2%; */
 `;
 
 export const KnowMore = styled.button`
-  background-color: #d6ffb7;
-  color: black;
-  font-size: 23px;
-  width: 195px;
-  height: 55px;
+  background-color: #ffc15e;
+  color: white;
+  font-size: 5vh;
+  width: 40%;
+  height: 20%;
   border-radius: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 2%;
 `;
-
