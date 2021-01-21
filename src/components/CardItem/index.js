@@ -1,57 +1,15 @@
 //STYLE
-import { Container, Card, CardImage, CardBody } from "./style";
+import { Card, CardImage, CardBody } from "./style";
 
-const CardItem = () => {
+const CardItem = ({ donation, description }) => {
   return (
-    <Container>
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-    </Container>
+    <Card>
+      <CardImage />
+      <CardBody>
+        <h2>{donation}</h2>
+        <span>{description}</span>
+      </CardBody>
+    </Card>
   );
 };
 export default CardItem;
