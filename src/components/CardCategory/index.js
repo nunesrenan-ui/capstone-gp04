@@ -1,5 +1,5 @@
 import { CardItemCategory, CardCategorys } from "./style";
-import { Desktop, Book, Java, StreetView, Basket } from "grommet-icons";
+import { Desktop, Book, StreetView } from "grommet-icons";
 
 const CardCategory = () => {
   return (
@@ -12,18 +12,18 @@ const CardCategory = () => {
         <Book />
         Livros
       </CardItemCategory>
-      <CardItemCategory>
+      {/* <CardItemCategory>
         <Java />
         Objetos
-      </CardItemCategory>
+      </CardItemCategory> */}
       <CardItemCategory>
         <StreetView />
-        Roupas
+        Vestuários
       </CardItemCategory>
-      <CardItemCategory>
+      {/* <CardItemCategory>
         <Basket />
         Comidas
-      </CardItemCategory>
+      </CardItemCategory> */}
     </CardCategorys>
   );
 };
