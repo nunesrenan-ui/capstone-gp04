@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { productItemThunk } from "../../store/modules/Product/thunks";
 
-const CartSearch = () => {
+const CardSearch = () => {
   const productsData = useSelector((state) => state.products);
   console.log(productsData);
 
@@ -28,8 +28,8 @@ const CartSearch = () => {
     item.nome.toLowerCase().includes(inputValue)
   );
 
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const moreInfo = (products) => {
     dispatch(productItemThunk(products));
@@ -63,11 +63,17 @@ const CartSearch = () => {
       </DivContainer>
       <CardsContainer>
         {findProduct.map((value, index) => (
-          <CardItem  key={index} descricao={value.descricao} nome={value.nome} imagem={value.imagem} info={() => moreInfo(value)} />
+          <CardItem
+            key={index}
+            descricao={value.descricao}
+            nome={value.nome}
+            imagem={value.imagem}
+            info={() => moreInfo(value)}
+          />
         ))}
       </CardsContainer>
     </>
   );
 };
 
-export default CartSearch;
+export default CardSearch;
