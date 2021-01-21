@@ -5,7 +5,7 @@ import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import { useEffect } from "react";
-import { Container } from "./style";
+import { Container, CardContainer } from "./style";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -29,7 +29,9 @@ const Feed = () => {
       .then((res) => dispatch(dataProductsThunk(res.data)))
       .catch((err) => console.log(err));
   }, []);
+
   const products = useSelector((state) => state.products); //variavel com array de produtos
+  console.log(products);
 
   return (
     <motion.div
@@ -41,7 +43,16 @@ const Feed = () => {
       <Container>
         <HeaderAll />
         <CardSearch />
-        <CardItem />
+        <CardContainer>
+          {products.map((value, index) => (
+            <CardItem
+              key={index}
+              nome={value.nome}
+              descricao={value.descricao}
+              imagem={value.imagem}
+            />
+          ))}
+        </CardContainer>
         <FooterAll />
       </Container>
     </motion.div>

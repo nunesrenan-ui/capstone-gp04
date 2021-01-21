@@ -1,13 +1,15 @@
 //STYLE
 import { Card, CardImage, CardBody } from "./style";
 
-const CardItem = ({ donation, description }) => {
+const CardItem = ({ nome, descricao, imagem }) => {
   return (
     <Card>
-      <CardImage />
+      <CardImage>
+        {imagem ? <img src={imagem} alt={`Foto ${nome}`} /> : <h1>Sem foto</h1>}
+      </CardImage>
       <CardBody>
-        <h2>{donation}</h2>
-        <span>{description}</span>
+        <h2>{nome}</h2>
+        <span>{descricao}</span>
       </CardBody>
     </Card>
   );

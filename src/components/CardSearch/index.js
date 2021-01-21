@@ -53,7 +53,7 @@ const CartSearch = () => {
       </DivContainer>
       <CardsContainer>
         {findProduct.map(({ descricao, nome }) => (
-          <CardItem donation={descricao} description={nome} />
+          <CardItem descricao={descricao} nome={nome} />
         ))}
       </CardsContainer>
     </>
