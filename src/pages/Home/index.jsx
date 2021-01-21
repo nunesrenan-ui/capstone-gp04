@@ -5,8 +5,11 @@ import AboutGiver from "../../components/AboutGiver";
 import HeaderAll from "../../components/Header";
 import FooterAll from "../../components/Footer";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [showContainer, setShowContainer] = useState(true);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -14,10 +17,8 @@ const HomePage = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <HeaderAll></HeaderAll>
-      <HomePageLayout>
-        <HomePageCard />
-      </HomePageLayout>
+      <HeaderAll setShowContainer={setShowContainer} />
+      <HomePageLayout>{showContainer && <HomePageCard />}</HomePageLayout>
       <ScrollDownHome>
         <AboutGiver />
       </ScrollDownHome>

@@ -15,11 +15,11 @@ import {
 //HOOKS
 import { useState } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { useSelector } from "react-redux";
 
 const ProfileEdit = () => {
-  const token = localStorage.getItem("authToken");
-  const data = jwt_decode(token);
+  const userData = useSelector((state) => state.loginData);
+  const { token, data } = userData;
   const userId = Number(data.sub);
 
   const [nameVal, setNameVal] = useState(false);

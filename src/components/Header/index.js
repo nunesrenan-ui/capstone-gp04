@@ -1,11 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Header, Button } from "grommet";
+import { Header, Button, Box } from "grommet";
 import { Home, Login, Logout, Flows, User, Clipboard } from "grommet-icons";
 import { Container } from "./style";
+import Modal from "../Modal";
+import CardLogin from "../CardLogin";
+import CardRegister from "../CardRegister";
+import { useSelector } from "react-redux";
 
-export const HeaderAll = () => {
+export const HeaderAll = ({ setShowContainer }) => {
   const history = useHistory();
+  const token = useSelector((state) => state.loginData.token);
   return (
     <Container>
       <Header background="#FF9F1C">
@@ -16,40 +21,48 @@ export const HeaderAll = () => {
           onClick={() => history.push("/")}
         />
 
-        <Button
-          icon={<Clipboard />}
-          hoverIndicator
-          title="Cadastre-se"
-          onClick={() => history.push("/cadastro")}
-        />
+        {token ? (
+          <Box direction="row" justify="between">
+            <Button
+              icon={<Flows />}
+              hoverIndicator
+              title="Feed"
+              onClick={() => history.push("/feed")}
+            />
 
-        <Button
-          icon={<Login />}
-          hoverIndicator
-          title="Login"
-          onClick={() => history.push("/login")}
-        />
+            <Button
+              icon={<User />}
+              hoverIndicator
+              title="Meu perfil"
+              onClick={() => history.push("/profile")}
+            />
 
-        <Button
-          icon={<Flows />}
-          hoverIndicator
-          title="Feed"
-          onClick={() => history.push("/feed")}
-        />
+            <Button
+              icon={<Logout />}
+              hoverIndicator
+              title="Logout"
+              onClick={() => history.push("/")}
+            />
+          </Box>
+        ) : (
+          <Box direction="row" justify="between">
+            <Modal
+              setShowContainer={setShowContainer}
+              icon={<Clipboard />}
+              title="Cadastre-se"
+            >
+              <CardRegister />
+            </Modal>
 
-        <Button
-          icon={<User />}
-          hoverIndicator
-          title="Meu perfil"
-          onClick={() => history.push("/profile")}
-        />
-
-        <Button
-          icon={<Logout />}
-          hoverIndicator
-          title="Logout"
-          onClick={() => history.push("/")}
-        />
+            <Modal
+              setShowContainer={setShowContainer}
+              icon={<Login />}
+              title="Login"
+            >
+              <CardLogin />
+            </Modal>
+          </Box>
+        )}
       </Header>
     </Container>
   );
