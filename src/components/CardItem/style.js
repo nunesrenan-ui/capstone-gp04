@@ -34,7 +34,7 @@ export const CardImage = styled.div`
   justify-content: center;
   align-items: center;
 
-  img{
+  img {
     width: 100%;
   }
 `;

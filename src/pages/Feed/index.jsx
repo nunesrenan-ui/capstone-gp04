@@ -46,6 +46,7 @@ const Feed = () => {
         <CardContainer></CardContainer>
         <FooterAll />
       </Container>
+      <FooterAll />
     </motion.div>
   );
 };

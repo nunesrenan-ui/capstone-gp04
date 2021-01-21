@@ -28,7 +28,6 @@ import { useHistory } from "react-router-dom";
 
 import axios from "axios";
 
-const requi = "*";
 const UserRegister = () => {
   const history = useHistory();
   const [nameVal, setNameVal] = useState(false);
@@ -65,7 +64,7 @@ const UserRegister = () => {
         <h2>Registre-se</h2>
       </CardHeader>
 
-      <Box align="center" justify="center" pad="small">
+      <Box align="center" justify="center" pad="large">
         <Form
           value={value}
           validate="blur"
@@ -78,7 +77,7 @@ const UserRegister = () => {
               name="name"
               icon={<User />}
               component={TextInput}
-              required="*"
+              required
               validate={[
                 { regexp: /^[a-zA-Z]+$/i, message: "Somente letras." },
                 (name) => {
@@ -120,10 +119,6 @@ const UserRegister = () => {
               name="phone"
               icon={<Phone />}
               validate={[
-                {
-                  regexp: /^[0-9]{10}$/i,
-                  message: "Somente números, dez dígitos",
-                },
                 (phone) => {
                   if (phone.length === 10) {
                     setPhoneVal(true);
