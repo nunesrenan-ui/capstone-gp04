@@ -1,57 +1,17 @@
 //STYLE
-import { Container, Card, CardImage, CardBody } from "./style";
+import { Card, CardImage, CardBody } from "./style";
 
-const CardItem = () => {
+const CardItem = ({ nome, descricao, imagem }) => {
   return (
-    <Container>
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardImage />
-        <CardBody>
-          <h2>Lorem Impsun</h2>
-          <span>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria
-            tipográfica e de impressos, e vem sendo utilizado desde o século
-            XVI.
-          </span>
-        </CardBody>
-      </Card>
-    </Container>
+    <Card>
+      <CardImage>
+        {imagem ? <img src={imagem} alt={`Foto ${nome}`} /> : <h1>Sem foto</h1>}
+      </CardImage>
+      <CardBody>
+        <h2>{nome}</h2>
+        <span>{descricao}</span>
+      </CardBody>
+    </Card>
   );
 };
 export default CardItem;
