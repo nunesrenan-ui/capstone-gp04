@@ -1,5 +1,4 @@
 import CardSearch from "../../components/CardSearch";
-import CardItem from "../../components/CardItem";
 import { useHistory } from "react-router-dom";
 import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
@@ -30,8 +29,9 @@ const Feed = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const products = useSelector((state) => state.products); //variavel com array de produtos
-  console.log(products);
+  //variavel com array de produtos
+
+
 
   return (
     <motion.div
@@ -43,16 +43,7 @@ const Feed = () => {
       <Container>
         <HeaderAll />
         <CardSearch />
-        <CardContainer>
-          {products.map((value, index) => (
-            <CardItem
-              key={index}
-              nome={value.nome}
-              descricao={value.descricao}
-              imagem={value.imagem}
-            />
-          ))}
-        </CardContainer>
+        <CardContainer></CardContainer>
         <FooterAll />
       </Container>
     </motion.div>

@@ -81,7 +81,7 @@ const DonateTab = () => {
     setCep("");
   };
 
-  const onSubmit = () => {
+  const checkData = () => {
     setValue({
       donation: value.donation,
       donationState: value.donationState,
@@ -99,7 +99,31 @@ const DonateTab = () => {
       cep: value.cep,
       userId: userId,
     });
-    console.log(value);
+    if (value.donation === "") {
+      delete value.donation;
+    }
+    if (value.donationState === "") {
+      delete value.donationState;
+    }
+    if (value.brand === "") {
+      delete value.brand;
+    }
+    if (value.model === "") {
+      delete value.model;
+    }
+    if (value.author === "") {
+      delete value.author;
+    }
+    if (value.title === "") {
+      delete value.title;
+    }
+    if (value.description === "") {
+      delete value.description;
+    }
+  };
+
+  const onSubmit = () => {
+    checkData();
     axios
       .post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
         headers: { Authorization: `Bearer ${token}` },

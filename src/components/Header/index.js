@@ -41,7 +41,10 @@ export const HeaderAll = ({ setShowContainer }) => {
               icon={<Logout />}
               hoverIndicator
               title="Logout"
-              onClick={() => history.push("/")}
+              onClick={() => {
+                history.push("/");
+                localStorage.clear();
+              }}
             />
           </Box>
         ) : (
