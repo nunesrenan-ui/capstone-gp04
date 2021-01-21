@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: fit-content;
   height: auto;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 `;
 
@@ -23,12 +23,20 @@ export const Card = styled.div`
   margin: 1%;
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.div`
   height: 20vh;
   width: 25vw;
   margin-top: 2%;
   border: solid 1px #ccc;
   border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 100%;
+  }
 `;
 
 export const CardBody = styled.div`
