@@ -43,16 +43,6 @@ const Feed = () => {
       <Container>
         <HeaderAll />
         <CardSearch />
-        <CardContainer>
-          {products.map((value, index) => (
-            <CardItem
-              key={index}
-              nome={value.nome}
-              descricao={value.descricao}
-              imagem={value.imagem}
-            />
-          ))}
-        </CardContainer>
         <FooterAll />
       </Container>
     </motion.div>

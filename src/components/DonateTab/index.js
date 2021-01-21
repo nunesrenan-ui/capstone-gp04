@@ -16,7 +16,6 @@ import { Camera } from "grommet-icons";
 //HOOKS
 import { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 //SOURCE DATA
 import { brazilStates } from "../../Source/index";
@@ -24,13 +23,7 @@ import { brazilStates } from "../../Source/index";
 //STYLES
 import { PhotoContainer } from "./style";
 
-const DonateTab = () => {
-  const userData = useSelector((state) => state.loginData);
-  const { token, data } = userData;
-  const userId = Number(data.sub);
-
-  console.log(token, userId);
-
+const DonateTab = ({ userId, token }) => {
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
   const [brand, setBrand] = useState("");
@@ -145,7 +138,7 @@ const DonateTab = () => {
         }}
         onSubmit={onSubmit}
       >
-        <FormField label="Tipo de Doação" name="donation">
+        <FormField label="Tipo de Doação" name="donation" required>
           <RadioButtonGroup
             direction="row"
             name="donation"
@@ -200,7 +193,6 @@ const DonateTab = () => {
             </FormField>
             <FormField label="Título" name="title">
               <TextInput
-                required
                 name="title"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
@@ -211,8 +203,10 @@ const DonateTab = () => {
 
         <FormField label="Estado da Doação" name="donationState" required>
           <Select
+            value={donationState}
             options={["Novo", "Semi-novo", "Usado"]}
             name="donationState"
+            onChange={(event) => setDonationState(event.value)}
           />
         </FormField>
 
@@ -263,7 +257,7 @@ const DonateTab = () => {
 
         <FormField label="Local de Entrega">
           <Box direction="row" justify="between">
-            <FormField width="150px">
+            <FormField width="150px" required>
               <TextInput
                 name="number"
                 placeholder="Número"
@@ -285,6 +279,7 @@ const DonateTab = () => {
           <TextInput
             name="cep"
             placeholder="CEP"
+            type="number"
             value={cep}
             onChange={(event) => setCep(event.target.value)}
           />

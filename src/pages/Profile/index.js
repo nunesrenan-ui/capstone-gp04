@@ -5,13 +5,21 @@ import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import Header from "../../components/Header";
+import jwt_decode from "jwt-decode";
 
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const history = useHistory();
-  /* const localToken = useSelector((state) => state.loginData.token); */
   const localToken = localStorage.getItem("authToken");
+  const data = jwt_decode(localToken);
+  const sub = Number(data.sub);
+  console.log(sub);
+
+  const data2 = useSelector((state) => state.loginData.token);
+  console.log(data2 === localToken);
+
   useEffect(() => {
     if (!localToken) {
       history.push("/");
@@ -36,7 +44,7 @@ const Profile = () => {
           interests="Anything"
           location="AnyPlace"
         />
-        <ProfileTabs />
+        <ProfileTabs token={localToken} userId={sub} />
       </Container>
       <FooterAll />
     </motion.div>

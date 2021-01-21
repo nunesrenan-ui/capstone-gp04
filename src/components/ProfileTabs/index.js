@@ -5,7 +5,7 @@ import { deepMerge } from "grommet/utils";
 import { useState } from "react";
 import { Container } from "./style";
 
-const ProfileTabs = () => {
+const ProfileTabs = ({ userId, token }) => {
   const [index, setIndex] = useState(0);
 
   const onActive = (nextIndex) => setIndex(nextIndex);
@@ -44,12 +44,12 @@ const ProfileTabs = () => {
       <Tabs activeIndex={index} onActive={onActive}>
         <Tab title="Editar Perfil">
           <Box margin="none" pad="large" align="center" background="accent-1">
-            <ProfileEdit />
+            <ProfileEdit userId={userId} token={token} />
           </Box>
         </Tab>
         <Tab title="Doar">
           <Box margin="none" pad="large" align="center" background="accent-1">
-            <DonateTab />
+            <DonateTab userId={userId} token={token} />
           </Box>
         </Tab>
         <Tab title="Meus Recebidos">
