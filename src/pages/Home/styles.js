@@ -40,11 +40,17 @@ export const ScrollDownHome = styled.div`
     margin-bottom: 15px;
     max-width: 65%;
     border-radius: 50px;
+    padding: 25px 0;
   }
 
   h1,
   h3 {
     text-align: center;
+    color: #f5ff90;
+  }
+
+  a {
+    text-decoration: none;
     color: #f5ff90;
   }
 `;

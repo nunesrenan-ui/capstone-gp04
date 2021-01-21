@@ -9,3 +9,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const CardContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;  
+`
