@@ -7,6 +7,7 @@ export const HomePageLayout = styled.div`
   height: 100vh;
   top: 3vh;
   background-image: url(${hands});
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,9 +15,9 @@ export const HomePageLayout = styled.div`
 
 export const ScrollDownHome = styled.div`
   width: auto;
-  max-width: 100%;
+  /* max-width: 100%;
   min-height: 100vh;
-  max-height: 100%;
+  max-height: 100%; */
   background-color: #d6ffb7;
   color: black;
   font-size: 25px;
@@ -38,6 +39,7 @@ export const ScrollDownHome = styled.div`
     margin: 0 auto;
     margin-bottom: 15px;
     max-width: 65%;
+    border-radius: 50px;
   }
 
   h1,
