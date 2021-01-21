@@ -31,8 +31,6 @@ const Feed = () => {
 
   //variavel com array de produtos
 
-
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
