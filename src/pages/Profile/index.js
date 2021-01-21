@@ -1,6 +1,5 @@
 import ProfileSideBar from "../../components/ProfileSideBar/index.js";
 import ProfileTabs from "../../components/ProfileTabs/index.js";
-<<<<<<< .merge_file_ZneaWb
 import { DivCentral, Container } from "./style";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -8,15 +7,6 @@ import FooterAll from "../../components/Footer";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import HeaderAll from "../../components/Header";
-=======
-import { Container } from "./style";
-import { useHistory } from "react-router-dom";
-import { motion } from "framer-motion";
-import FooterAll from "../../components/Footer";
-import Header from "../../components/Header";
-
-import { useEffect } from "react";
->>>>>>> .merge_file_0YLUWf
 
 const Profile = () => {
   const history = useHistory();
@@ -35,10 +25,6 @@ const Profile = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-<<<<<<< .merge_file_ZneaWb
-=======
-      <Header />
->>>>>>> .merge_file_0YLUWf
       <Container>
         <HeaderAll />
         <DivCentral>
