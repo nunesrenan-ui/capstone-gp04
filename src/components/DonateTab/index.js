@@ -16,7 +16,7 @@ import { Camera } from "grommet-icons";
 //HOOKS
 import { useState } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import { useSelector } from "react-redux";
 
 //SOURCE DATA
 import { brazilStates } from "../../Source/index";
@@ -25,9 +25,11 @@ import { brazilStates } from "../../Source/index";
 import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
-  const token = localStorage.getItem("authToken");
-  const data = jwt_decode(token);
+  const userData = useSelector((state) => state.loginData);
+  const { token, data } = userData;
   const userId = Number(data.sub);
+
+  console.log(token, userId);
 
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
@@ -102,7 +104,10 @@ const DonateTab = () => {
       .post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        clear();
+      })
       .catch((err) => console.log(err));
   };
 

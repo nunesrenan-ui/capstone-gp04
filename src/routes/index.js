@@ -3,8 +3,6 @@ import Profile from "../pages/Profile";
 import Description from "../pages/Description";
 import Feed from "../pages/Feed";
 import HomePage from "../pages/Home/";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage/";
 import { AnimatePresence } from "framer-motion";
 
 const Routes = () => {
@@ -14,16 +12,6 @@ const Routes = () => {
         {/* Página Home */}
         <Route exact path="/">
           <HomePage />
-        </Route>
-
-        {/* Página de Login */}
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-
-        {/* Página de Cadastro */}
-        <Route exact path="/cadastro">
-          <RegisterPage />
         </Route>
 
         {/* Profile */}

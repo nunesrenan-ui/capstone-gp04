@@ -4,14 +4,11 @@ import { Button, Layer } from "grommet";
 export const StyledButton = styled(Button)`
   background-color: #ff9f1c;
   border: none;
-  height: 30px;
-  width: 130px;
+  height: 48px;
+  width: 48px;
   text-align: right;
-  font-size: 17px;
 
-  :hover {
-    font-size: 18px;
-  }
+  padding: 12px;
 `;
 
 export const StyledLayer = styled(Layer)`

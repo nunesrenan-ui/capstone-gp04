@@ -1,15 +1,18 @@
 import CardSearch from "../../components/CardSearch";
 import CardItem from "../../components/CardItem";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import { useEffect } from "react";
-import { Header, Container } from "./style";
+import { Container } from "./style";
 import { useSelector } from "react-redux";
 
 const Feed = () => {
   const history = useHistory();
   const checkToken = useSelector((state) => state.loginData.token);
+  console.log("tokenPaginaFeed", checkToken);
+  const products = useSelector((state) => state.products); //variavel com array de produtos
 
   useEffect(() => {
     if (!checkToken) {
@@ -25,15 +28,7 @@ const Feed = () => {
       transition={{ duration: 1 }}
     >
       <Container>
-        <Header>
-          {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-          <div>
-            <Link to="/cadastro">Seja um doador</Link>
-          </div>
-          <div>
-            <Link to="/login">Login</Link>
-          </div>
-        </Header>
+        <HeaderAll />
         <CardSearch />
         <CardItem />
         <FooterAll />

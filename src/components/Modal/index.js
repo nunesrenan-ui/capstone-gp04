@@ -4,7 +4,7 @@ import { Box, Grommet } from "grommet";
 
 import { StyledButton, StyledLayer } from "./style";
 
-const CenterLayer = ({ setShowContainer, title, children }) => {
+const CenterLayer = ({ setShowContainer, children, icon, title }) => {
   const [open, setOpen] = useState();
 
   const onOpen = () => setOpen(true);
@@ -15,7 +15,9 @@ const CenterLayer = ({ setShowContainer, title, children }) => {
     <Grommet>
       <Box>
         <StyledButton
-          label={title}
+          icon={icon}
+          title={title}
+          hoverIndicator
           onClick={() => {
             onOpen();
             setShowContainer(false);

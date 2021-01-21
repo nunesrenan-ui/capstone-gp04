@@ -1,7 +1,4 @@
 //OBS : arrumar o required ( nao consigo mudar o texto)
-
-import styled from "styled-components";
-
 import CardHeader from "../CardHeader";
 
 import {
@@ -220,16 +217,3 @@ const UserRegister = () => {
 };
 
 export default UserRegister;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 5vh;
-  background-color: #ff9f1c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  div {
-    margin: 0 1%;
-  }
-`;

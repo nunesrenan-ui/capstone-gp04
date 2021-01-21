@@ -2,10 +2,7 @@ import { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import styled from "styled-components";
 import { Box, Form, FormField, TextInput, Button } from "grommet";
-import { motion } from "framer-motion";
-import Footer from "../../components/Footer";
 import CardHeader from "../CardHeader";
 
 import { MailOption, Hide, View, Lock, StatusGood } from "grommet-icons";
@@ -14,6 +11,7 @@ import axios from "axios";
 
 import { useDispatch } from "react-redux";
 import { dataLoginThunk } from "../../store/modules/UserLogin/thunks";
+import { dataProductsThunk } from "../../store/modules/Products/thunks";
 
 const UserLogin = () => {
   const history = useHistory();
@@ -34,10 +32,12 @@ const UserLogin = () => {
         ...values,
       })
       .then((res) => {
-        console.log(res);
-        window.localStorage.setItem("authToken", res.data.accessToken);
         dispatch(dataLoginThunk(res.data));
-        history.push("/profile");
+        axios
+          .get("https://api-capstone-grupo04.herokuapp.com/produtos")
+          .then((res) => dispatch(dataProductsThunk(res.data)))
+          .catch((err) => console.log(err));
+        history.push("/feed");
       })
       .catch((err) => {
         console.log("erro", err);
@@ -120,16 +120,3 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
-
-export const Header = styled.div`
-  width: 100%;
-  height: 5vh;
-  background-color: #ff9f1c;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  div {
-    margin: 0 1%;
-  }
-`;
