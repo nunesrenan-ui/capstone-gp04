@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "name": "Marcos",
+      "lastName": "Paulo",
+      "phone": 555555555,
+      "email": "marcos@marcos.com",
+      "password": "12345"
+    },
+    {
+      "name": "Miranda",
+      "lastName": "Paulo",
+      "phone": 555555555,
+      "email": "miranda@miranda.com",
+      "password": "12345"
+    },
+    {
+      "name": "Rogério",
+      "lastName": "Paulo",
+      "phone": 555555555,
+      "email": "rogerio@rogerio.com",
+      "password": "12345"
+    },
+    {
+      "name": "André",
+      "lastName": "Paulo",
+      "phone": 555555555,
+      "email": "andre@andre.com",
+      "password": "12345"
+    },
+    {
+      "name": "Carlos",
+      "lastName": "Miguel",
+      "phone": 555555555,
+      "email": "carlos@carlos.com",
+      "password": "12345"
+    },
+    {
+      "name": "João",
+      "lastName": "Souza",
+      "phone": 555555555,
+      "email": "souza@souza.com",
+      "password": "12345"
+    },
+    {
+      "name": "Nicolas",
+      "lastName": "Nauro",
+      "phone": 555555555,
+      "email": "nick@marcos.com",
+      "password": "12345"
+    },
+    {
+      "name": "Leandro",
+      "lastName": "Paulo",
+      "phone": 555555555,
+      "email": "leo@marcos.com",
+      "password": "12345"
+    }
+  ]
+}

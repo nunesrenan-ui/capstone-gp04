@@ -18,12 +18,12 @@ const CartSearch = () => {
 
   const { active, category } = buttonCategory;
 
-  const onChange = (event) => {
+  const onchange = (event) => {
     setInputValue(event.target.value);
   };
 
   const findProduct = productsData.filter((item) =>
-    item.nome.toLowerCase().includes(inputValue)
+    item.nome.toLowerCase().match(inputValue)
   );
 
   //Usar quando a api estiver funcionando
@@ -38,7 +38,7 @@ const CartSearch = () => {
   return (
     <>
       <DivContainer>
-        <CardInput value={inputValue} onChange={onChange} />
+        <CardInput value={inputValue} onChange={onchange} />
         <CardCategory
           onClickEletronic={() =>
             setButtonCategory({ active: true, category: "Eletrônicos" })
