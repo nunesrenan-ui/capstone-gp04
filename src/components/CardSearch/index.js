@@ -62,7 +62,7 @@ const CardSearch = () => {
         />
       </DivContainer>
       <CardsContainer>
-        {productsData.map((value, index) => (
+        {findProduct.map((value, index) => (
           <CardItem
             key={index}
             descricao={value.descricao}

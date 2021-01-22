@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 export const HeaderAll = ({ setShowContainer }) => {
   const history = useHistory();
   const token = useSelector((state) => state.loginData.token);
+
   return (
     <Container>
       <Header background="#FF9F1C">
@@ -34,7 +35,9 @@ export const HeaderAll = ({ setShowContainer }) => {
               icon={<User />}
               hoverIndicator
               title="Meu perfil"
-              onClick={() => history.push("/profile")}
+              onClick={() => {
+                history.push("/profile");
+              }}
             />
 
             <Button
