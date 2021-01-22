@@ -55,7 +55,7 @@ const Description = () => {
           <StyledDescription>
             <p>{productItem.descricao}</p>
             <h3>Estado da doação: {productItem.estado}</h3>
-{/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
+            {/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
             <ButtonDiv>
               <button
                 style={{
@@ -71,9 +71,6 @@ const Description = () => {
           </StyledDescription>
         </Body>
 
-        {/* <Similares>
-          <h2>Produtos Similares:</h2>
-        </Similares> */}
         <FooterAll></FooterAll>
       </Container>
     </motion.div>

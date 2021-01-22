@@ -42,7 +42,6 @@ const Feed = () => {
         <HeaderAll />
         <CardSearch />
         <CardContainer></CardContainer>
-        <FooterAll />
       </Container>
       <FooterAll />
     </motion.div>
