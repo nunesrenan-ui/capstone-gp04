@@ -34,7 +34,7 @@ export const CardImage = styled.div`
   justify-content: center;
   align-items: center;
 
-  img{
+  img {
     width: 100%;
   }
 `;
@@ -56,5 +56,16 @@ export const CardBody = styled.div`
     font-size: 1em;
     color: black;
     text-align: left;
+  }
+
+  button {
+    margin-top: 12%;
+    background-color: #ff9f1c;
+    padding: 8px;
+    border-radius: 20px;
+    border-color: #ff9f1c;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
   }
 `;

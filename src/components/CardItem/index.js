@@ -1,7 +1,7 @@
 //STYLE
 import { Card, CardImage, CardBody } from "./style";
 
-const CardItem = ({ nome, descricao, imagem }) => {
+const CardItem = ({ nome, descricao, imagem, info }) => {
   return (
     <Card>
       <CardImage>
@@ -10,6 +10,7 @@ const CardItem = ({ nome, descricao, imagem }) => {
       <CardBody>
         <h2>{nome}</h2>
         <span>{descricao}</span>
+        <button onClick={info}>Mais informações</button>
       </CardBody>
     </Card>
   );

@@ -16,6 +16,12 @@ import { useState } from "react";
 import axios from "axios";
 
 const ProfileEdit = ({ userId, token }) => {
+  const [nameVal, setNameVal] = useState("");
+  const [lastNameVal, setLastNameVal] = useState("");
+  const [phoneVal, setPhoneVal] = useState("");
+  const [photoVal, setPhotoVal] = useState("");
+  const [passwordVal, setPassworVal] = useState("");
+
   const [value, setValue] = useState({
     name: "",
     lastName: "",
@@ -84,9 +90,10 @@ const ProfileEdit = ({ userId, token }) => {
           <FormField
             label="Nome"
             name="name"
-            value={name}
+            value={nameVal}
             icon={<User />}
             component={TextInput}
+            onChange={(event) => setNameVal(event.target.value)}
           ></FormField>
           <Box align="center" justify="center">
             {name && <StatusGood />}
@@ -99,7 +106,8 @@ const ProfileEdit = ({ userId, token }) => {
             name="lastName"
             icon={<User />}
             component={TextInput}
-            value={lastName}
+            value={lastNameVal}
+            onChange={(event) => setLastNameVal(event.target.value)}
           />
           <Box align="center" justify="center">
             {lastName && <StatusGood />}
@@ -112,7 +120,8 @@ const ProfileEdit = ({ userId, token }) => {
             name="phone"
             icon={<Phone />}
             component={TextInput}
-            value={phone}
+            value={phoneVal}
+            onChange={(event) => setPhoneVal(event.target.value)}
           />
           <Box align="center" justify="center">
             {phone && <StatusGood />}
@@ -125,7 +134,8 @@ const ProfileEdit = ({ userId, token }) => {
             name="profilePicture"
             icon={<Camera />}
             component={TextInput}
-            value={profilePicture}
+            value={photoVal}
+            onChange={(event) => setPhotoVal(event.target.value)}
           />
         </Box>
 
@@ -135,7 +145,8 @@ const ProfileEdit = ({ userId, token }) => {
             name="password"
             icon={<Lock />}
             type={reveal ? "text" : "password"}
-            value={password}
+            value={passwordVal}
+            onChange={(event) => setPassworVal(event.target.value)}
           />
 
           <Button

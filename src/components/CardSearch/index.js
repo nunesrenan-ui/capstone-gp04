@@ -1,11 +1,13 @@
 import CardCategory from "../../components/CardCategory";
 import CardItem from "../CardItem/index";
-
 import { DivContainer, CardInput, CardsContainer } from "./style";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
-const CartSearch = () => {
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { productItemThunk } from "../../store/modules/Product/thunks";
+
+const CardSearch = () => {
   const productsData = useSelector((state) => state.products);
   console.log(productsData);
 
@@ -16,7 +18,7 @@ const CartSearch = () => {
     category: "",
   });
 
-  const { active, category } = buttonCategory;
+  /* const { active, category } = buttonCategory; */
 
   const onchange = (event) => {
     setInputValue(event.target.value);
@@ -26,13 +28,21 @@ const CartSearch = () => {
     item.nome.toLowerCase().match(inputValue)
   );
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const moreInfo = (products) => {
+    dispatch(productItemThunk(products));
+    history.push("/description");
+  };
+
   //Usar quando a api estiver funcionando
   /*   const setFilter = productsData.filter((item) =>
     item.donation.toLowerCase().includes(category)
   );
 
   const findFiltered = setFilter.filter((item) =>
-    item.nome.toLowerCase().includes(inputValue)
+    item.type.toLowerCase().includes(inputValue)
   ); */
 
   return (
@@ -52,12 +62,18 @@ const CartSearch = () => {
         />
       </DivContainer>
       <CardsContainer>
-        {findProduct.map(({ descricao, nome }) => (
-          <CardItem descricao={descricao} nome={nome} />
+        {productsData.map((value, index) => (
+          <CardItem
+            key={index}
+            descricao={value.descricao}
+            nome={value.nome}
+            imagem={value.imagem}
+            info={() => moreInfo(value)}
+          />
         ))}
       </CardsContainer>
     </>
   );
 };
 
-export default CartSearch;
+export default CardSearch;

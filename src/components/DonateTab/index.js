@@ -25,6 +25,7 @@ import { PhotoContainer } from "./style";
 
 const DonateTab = ({ userId, token }) => {
   const [donation, setDonation] = useState("");
+  const [type, setType] = useState("");
   const [donationState, setDonationState] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
@@ -55,6 +56,7 @@ const DonateTab = ({ userId, token }) => {
     number: "",
     state: "",
     cep: "",
+    type: "",
   });
 
   const clear = () => {
@@ -72,6 +74,7 @@ const DonateTab = ({ userId, token }) => {
     setState("");
     setNumber("");
     setCep("");
+    setType("");
   };
 
   const checkData = () => {
@@ -90,8 +93,12 @@ const DonateTab = ({ userId, token }) => {
       number: value.number,
       state: value.state,
       cep: value.cep,
+      type: value.type,
       userId: userId,
     });
+    if (value.type === "") {
+      delete value.type;
+    }
     if (value.donation === "") {
       delete value.donation;
     }
@@ -138,7 +145,7 @@ const DonateTab = ({ userId, token }) => {
         }}
         onSubmit={onSubmit}
       >
-        <FormField label="Tipo de Doação" name="donation" required>
+        <FormField label="Tipo de Doação" name="donation">
           <RadioButtonGroup
             direction="row"
             name="donation"
@@ -210,6 +217,14 @@ const DonateTab = ({ userId, token }) => {
           />
         </FormField>
 
+        <FormField label="Descrição Breve" name="type" required>
+          <TextInput
+            name="type"
+            value={type}
+            onChange={(event) => setType(event.target.value)}
+          />
+        </FormField>
+
         <FormField label="Fotos">
           <PhotoContainer direction="row">
             <TextInput
@@ -238,7 +253,7 @@ const DonateTab = ({ userId, token }) => {
           </PhotoContainer>
         </FormField>
 
-        <FormField label="Descrição" name="description">
+        <FormField label="Descrição detalhada" name="description">
           <TextArea
             name="description"
             value={description}
@@ -257,7 +272,7 @@ const DonateTab = ({ userId, token }) => {
 
         <FormField label="Local de Entrega">
           <Box direction="row" justify="between">
-            <FormField width="150px" required>
+            <FormField width="150px">
               <TextInput
                 name="number"
                 placeholder="Número"
