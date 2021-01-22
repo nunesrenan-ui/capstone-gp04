@@ -24,7 +24,7 @@ const Feed = () => {
 
   useEffect(() => {
     axios
-      .get("https://api-capstone-grupo04.herokuapp.com/produtos")
+      .get("https://api-capstone-grupo04.herokuapp.com/products")
       .then((res) => dispatch(dataProductsThunk(res.data)))
       .catch((err) => console.log(err));
   }, []);

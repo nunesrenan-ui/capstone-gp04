@@ -25,7 +25,7 @@ const CardSearch = () => {
   };
 
   const findProduct = productsData.filter((item) =>
-    item.nome.toLowerCase().includes(inputValue)
+    item.type.toLowerCase().includes(inputValue)
   );
 
   const dispatch = useDispatch();
@@ -65,9 +65,9 @@ const CardSearch = () => {
         {findProduct.map((value, index) => (
           <CardItem
             key={index}
-            descricao={value.descricao}
-            nome={value.nome}
-            imagem={value.imagem}
+            descricao={value.brand}
+            nome={value.type}
+            imagem={value.frontSide}
             info={() => moreInfo(value)}
           />
         ))}
