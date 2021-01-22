@@ -26,6 +26,7 @@ const Description = () => {
 
   const EuQuero = (produto, id) => {
     dispatch(wishesCartThunk(produto, id));
+
     setAddButton(true);
   };
 
