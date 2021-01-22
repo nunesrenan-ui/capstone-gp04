@@ -1,13 +1,36 @@
 import CardSearch from "../../components/CardSearch";
-import CardItem from "../../components/CardItem";
-
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import HeaderAll from "../../components/Header";
 import { motion } from "framer-motion";
-import Footer from "../../components/Footer";
-
-import { Header, DivContainerCards, DivSearch, Container } from "./style";
+import FooterAll from "../../components/Footer";
+import { useEffect } from "react";
+import { Container, CardContainer } from "./style";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { dataProductsThunk } from "../../store/modules/Products/thunks";
 
 const Feed = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  // const checkToken = useSelector((state) => state.loginData.token);
+  const localToken = localStorage.getItem("authToken");
+
+  useEffect(() => {
+    if (!localToken) {
+      history.push("/");
+    }
+  }, [localToken]);
+
+  useEffect(() => {
+    axios
+      .get("https://api-capstone-grupo04.herokuapp.com/products")
+      .then((res) => dispatch(dataProductsThunk(res.data)))
+      .catch((err) => console.log(err));
+  }, []);
+
+  //variavel com array de produtos
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,25 +38,12 @@ const Feed = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
-      <Header>
-        {/* AQUI VAI TERNARIO PARA SE ESTIVER LOGADO */}
-        <div>
-          <Link to="/cadastro">Seja um doador</Link>
-        </div>
-        <div>
-          <Link to="/login">Login</Link>
-        </div>
-      </Header>
-
+      <HeaderAll />
       <Container>
         <CardSearch />
-
-        <DivContainerCards>
-          <CardItem />
-        </DivContainerCards>
+        <CardContainer></CardContainer>
       </Container>
-
-      <Footer />
+      <FooterAll />
     </motion.div>
   );
 };

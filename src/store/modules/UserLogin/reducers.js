@@ -1,9 +1,7 @@
 const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case "DATA_LOGIN":
-      const { dataLogin } = action;
-      return { ...state, ...dataLogin };
-
+      return { ...state, ...action.data };
     default:
       return state;
   }

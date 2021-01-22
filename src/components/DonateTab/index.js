@@ -1,6 +1,3 @@
-//ACTIONS
-import { addDonation } from "../../store/modules/AddDonation/actions";
-
 //GROMMET COMPONENTS
 import {
   Box,
@@ -18,8 +15,8 @@ import { Camera } from "grommet-icons";
 
 //HOOKS
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 //SOURCE DATA
 import { brazilStates } from "../../Source/index";
@@ -28,9 +25,11 @@ import { brazilStates } from "../../Source/index";
 import { PhotoContainer } from "./style";
 
 const DonateTab = () => {
-  const dispatch = useDispatch();
   const userData = useSelector((state) => state.loginData);
-  console.log(userData);
+  const { token, data } = userData;
+  const userId = Number(data.sub);
+
+  console.log(token, userId);
 
   const [donation, setDonation] = useState("");
   const [donationState, setDonationState] = useState("");
@@ -47,12 +46,6 @@ const DonateTab = () => {
   const [number, setNumber] = useState("");
   const [state, setState] = useState("");
   const [cep, setCep] = useState("");
-
-  /*   const onFinish = (values) => {
-    console.log(values);
-    history.push('/login')
-     Testes da API, levar para a pagina de login depois.
-  }; */
 
   const [value, setValue] = useState({
     donation: "",
@@ -88,22 +81,69 @@ const DonateTab = () => {
     setCep("");
   };
 
-  const token = localStorage.getItem("authToken");
+  const checkData = () => {
+    setValue({
+      donation: value.donation,
+      donationState: value.donationState,
+      brand: value.brand,
+      model: value.model,
+      author: value.author,
+      title: value.title,
+      description: value.description,
+      date: value.date,
+      frontSide: value.frontSide,
+      backSide: value.backSide,
+      side: value.side,
+      number: value.number,
+      state: value.state,
+      cep: value.cep,
+      userId: userId,
+    });
+    if (value.donation === "") {
+      delete value.donation;
+    }
+    if (value.donationState === "") {
+      delete value.donationState;
+    }
+    if (value.brand === "") {
+      delete value.brand;
+    }
+    if (value.model === "") {
+      delete value.model;
+    }
+    if (value.author === "") {
+      delete value.author;
+    }
+    if (value.title === "") {
+      delete value.title;
+    }
+    if (value.description === "") {
+      delete value.description;
+    }
+  };
 
   const onSubmit = () => {
-    axios.post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
-      headers: { Authorization: `Bearer` },
-    });
+    checkData();
+    axios
+      .post("https://api-capstone-grupo04.herokuapp.com/produtos", value, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res);
+        clear();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <Box round background="rgba(0, 0, 0, 0.7)" direction="row" pad="medium">
       <Form
+        name="userId"
         onChange={(value) => setValue(value)}
         onReset={() => {
           clear();
         }}
-        onSubmit={(event) => console.log("Submit", event.value, event.touched)}
+        onSubmit={onSubmit}
       >
         <FormField label="Tipo de Doação" name="donation">
           <RadioButtonGroup
