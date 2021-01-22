@@ -7,6 +7,7 @@ export const wishesCartThunk = (produto, id) => {
       produtoId: produto.id,
       userId: id.sub,
     };
+    console.log("thunkcart", item);
     dispatch(wishesCart(item));
   };
 };

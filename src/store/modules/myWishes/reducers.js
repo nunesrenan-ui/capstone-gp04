@@ -1,7 +1,8 @@
-const wishesCartReducer = (state = {}, action) => {
+const wishesCartReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return action.data;
+      let teste = [...state, ...action.data];
+      return [...state, ...action.data];
 
     default:
       return state;
