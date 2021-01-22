@@ -7,14 +7,14 @@ export const DivContainer = styled.div`
 
   box-sizing: border-box;
   height: 30%;
-  width: 60%;
+  width: 50%;
   background-color: #ff9f1c;
   border-radius: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 2% 0;
+  margin: 1% 0;
   padding: 2%;
 `;
 

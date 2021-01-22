@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import HeaderAll from "../../components/Header";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 
 const Profile = () => {
   const [userInfo, setUserInfor] = useState([]);

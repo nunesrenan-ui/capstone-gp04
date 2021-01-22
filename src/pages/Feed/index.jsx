@@ -24,7 +24,7 @@ const Feed = () => {
 
   useEffect(() => {
     axios
-      .get("https://api-capstone-grupo04.herokuapp.com/produtos")
+      .get("https://api-capstone-grupo04.herokuapp.com/products")
       .then((res) => dispatch(dataProductsThunk(res.data)))
       .catch((err) => console.log(err));
   }, []);
@@ -38,8 +38,8 @@ const Feed = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
+      <HeaderAll />
       <Container>
-        <HeaderAll />
         <CardSearch />
         <CardContainer />
       </Container>

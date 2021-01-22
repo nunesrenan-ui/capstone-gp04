@@ -1,5 +1,6 @@
 import ProfileEdit from "../ProfileEdit";
 import DonateTab from "../DonateTab";
+import Cart from "../MyWishes";
 import { Box, grommet, Tab, Tabs } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { useState } from "react";
@@ -52,9 +53,9 @@ const ProfileTabs = ({ userId, token }) => {
             <DonateTab userId={userId} token={token} />
           </Box>
         </Tab>
-        <Tab title="Meus Recebidos">
+        <Tab title="Meu Carrinho">
           <Box margin="none" pad="large" align="center" background="accent-1">
-            <ProfileEdit />
+            <div>hello</div>
           </Box>
         </Tab>
       </Tabs>

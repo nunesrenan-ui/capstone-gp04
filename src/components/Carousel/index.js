@@ -2,8 +2,6 @@ import React from "react";
 
 import { Box, Grid } from "grommet";
 import { Apps } from "grommet-icons";
-import RoutedButton from "./RoutedButton";
-
 import PropTypes from "prop-types";
 import { matchPath, withRouter } from "react-router";
 import { Button } from "grommet";
