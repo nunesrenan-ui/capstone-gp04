@@ -60,23 +60,12 @@ const CardSearch = () => {
             setButtonCategory({ active: true, category: "Livros" })
           }
         />
-        <CardsContainer>
-          {findProduct.map((value, index) => (
-            <CardItem
-              key={index}
-              descricao={value.descricao}
-              nome={value.nome}
-              imagem={value.imagem}
-              info={() => moreInfo(value)}
-            />
-          ))}
-        </CardsContainer>
       </DivContainer>
       <CardsContainer>
         {findProduct.map((value, index) => (
           <CardItem
             key={index}
-            descricao={value.brand}
+            descricao={value.title ? value.title : value.brand}
             nome={value.type}
             imagem={value.frontSide}
             info={() => moreInfo(value)}
