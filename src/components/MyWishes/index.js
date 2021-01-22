@@ -6,8 +6,8 @@ const Cart = () => {
 
   return (
     <>
-      {cartItens.map(({ type, frontSide }) => (
-        <CardItem nome={type} imagem={frontSide} />
+      {cartItens.map(({ produtoNome, produtoImg }, index) => (
+        <CardItem key={index} nome={produtoNome} imagem={produtoImg} />
       ))}
     </>
   );

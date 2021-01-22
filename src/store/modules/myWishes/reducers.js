@@ -1,7 +1,7 @@
 const wishesCartReducer = (state = [], action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return [{ ...state, ...action.data }];
+      return [{ ...action.data, state }];
 
     default:
       return state;
