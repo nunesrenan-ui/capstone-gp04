@@ -7,6 +7,7 @@ import Modal from "../Modal";
 import CardLogin from "../CardLogin";
 import CardRegister from "../CardRegister";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 export const HeaderAll = ({ setShowContainer }) => {
   const history = useHistory();
@@ -15,6 +16,7 @@ export const HeaderAll = ({ setShowContainer }) => {
   return (
     <Container>
       <Header background="#FF9F1C">
+        <TitleGiver>Giver</TitleGiver>
         <Button
           icon={<Home />}
           hoverIndicator
@@ -75,3 +77,7 @@ export const HeaderAll = ({ setShowContainer }) => {
 };
 
 export default HeaderAll;
+
+export const TitleGiver = styled.span`
+  font-size: 2em;
+`;

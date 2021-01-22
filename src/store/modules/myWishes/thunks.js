@@ -4,6 +4,7 @@ export const wishesCartThunk = (produto, id) => {
   return (dispatch, getState) => {
     let item = {
       produtoNome: produto.type,
+      produtoImg: produto.frontSide,
       produtoId: produto.id,
       userId: id.sub,
     };
