@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DivCentral = styled.div`
   display: flex;
   margin: 0 auto;
-  margin-top: 101px;
+  margin-top: 2vh;
   margin-bottom: 50px;
   padding: 20px;
   width: 979px;

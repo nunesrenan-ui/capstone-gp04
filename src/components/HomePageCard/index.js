@@ -10,22 +10,29 @@ const HomePageCard = () => {
     <div>
       <HomePageCardLayout>
         <IconsContainer>
-            <CardsIcons
-              image={tv}
-              text={"Evite o descarte desnecessário de eletrônicos"}
-            />
-            <CardsIcons
-              image={camiseta}
-              text={"Doe roupas que você não usa mais"}
-            />
-            <CardsIcons
-              image={livro}
-              text={"Enriqueça a cultura de outra pessoa"}
-            />
+          <CardsIcons
+            image={tv}
+            text={"Evite o descarte desnecessário de eletrônicos"}
+          />
+          <CardsIcons
+            image={camiseta}
+            text={"Doe roupas que você não usa mais"}
+          />
+          <CardsIcons
+            image={livro}
+            text={"Enriqueça a cultura de outra pessoa"}
+          />
         </IconsContainer>
         <KnowMore>
-          <section id="section1">
-            <Link activeClass="active" to="section2" spy={true} smooth={true} offset={-70} duration={500}>
+          <section id="section1" style={{ cursor: "pointer" }}>
+            <Link
+              activeClass="active"
+              to="section2"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+            >
               <span></span>Saiba mais
             </Link>
           </section>
