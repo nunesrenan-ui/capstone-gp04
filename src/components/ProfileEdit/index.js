@@ -2,7 +2,6 @@
 import { Box, Form, FormField, TextInput, Button } from "grommet";
 
 import {
-  MailOption,
   User,
   Phone,
   Hide,
@@ -15,29 +14,33 @@ import {
 //HOOKS
 import { useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
-const ProfileEdit = () => {
-  const userData = useSelector((state) => state.loginData);
-  const { token, data } = userData;
-  const userId = Number(data.sub);
-
-  const [nameVal, setNameVal] = useState(false);
-  const [lastNameVal, setLastNameVal] = useState(false);
-  const [phoneVal, setPhoneVal] = useState(false);
-  const [emailVal, setEmailVal] = useState(false);
-  const [passwordVal, setPasswordVal] = useState(false);
+const ProfileEdit = ({ userId, token }) => {
+  const [nameVal, setNameVal] = useState("");
+  const [lastNameVal, setLastNameVal] = useState("");
+  const [phoneVal, setPhoneVal] = useState("");
+  const [photoVal, setPhotoVal] = useState("");
+  const [passwordVal, setPassworVal] = useState("");
 
   const [value, setValue] = useState({
     name: "",
     lastName: "",
     phone: "",
-    email: "",
     profilePicture: "",
     password: "",
   });
 
-  const { name, lastName, phone, email, profilePicture, password } = value;
+  const clear = () => {
+    setValue({
+      name: "",
+      lastName: "",
+      phone: "",
+      profilePicture: "",
+      password: "",
+    });
+  };
+
+  const { name, lastName, phone, profilePicture, password } = value;
 
   const checkData = () => {
     if (name === "") {
@@ -48,9 +51,6 @@ const ProfileEdit = () => {
     }
     if (phone === "") {
       delete value.phone;
-    }
-    if (email === "") {
-      delete value.email;
     }
     if (profilePicture === "") {
       delete value.profilePicture;
@@ -71,10 +71,15 @@ const ProfileEdit = () => {
         `https://api-capstone-grupo04.herokuapp.com/users/${userId}`,
         value,
         {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        clear();
+      })
       .catch((err) => console.log(err));
   };
 
@@ -85,32 +90,41 @@ const ProfileEdit = () => {
           <FormField
             label="Nome"
             name="name"
+            value={nameVal}
             icon={<User />}
             component={TextInput}
+            onChange={(event) => setNameVal(event.target.value)}
           ></FormField>
           <Box align="center" justify="center">
-            {nameVal && <StatusGood />}
+            {name && <StatusGood />}
           </Box>
         </Box>
 
         <Box>
-          <FormField label="Sobrenome" name="lastName" icon={<User />} />
+          <FormField
+            label="Sobrenome"
+            name="lastName"
+            icon={<User />}
+            component={TextInput}
+            value={lastNameVal}
+            onChange={(event) => setLastNameVal(event.target.value)}
+          />
           <Box align="center" justify="center">
-            {lastNameVal && <StatusGood />}
+            {lastName && <StatusGood />}
           </Box>
         </Box>
 
         <Box>
-          <FormField label="Telefone" name="phone" icon={<Phone />} />
+          <FormField
+            label="Telefone"
+            name="phone"
+            icon={<Phone />}
+            component={TextInput}
+            value={phoneVal}
+            onChange={(event) => setPhoneVal(event.target.value)}
+          />
           <Box align="center" justify="center">
-            {phoneVal && <StatusGood />}
-          </Box>
-        </Box>
-
-        <Box>
-          <FormField label="E-mail" name="email" icon={<MailOption />} />
-          <Box align="center" justify="center">
-            {emailVal && <StatusGood />}
+            {phone && <StatusGood />}
           </Box>
         </Box>
 
@@ -119,6 +133,9 @@ const ProfileEdit = () => {
             label="Foto de Perfil"
             name="profilePicture"
             icon={<Camera />}
+            component={TextInput}
+            value={photoVal}
+            onChange={(event) => setPhotoVal(event.target.value)}
           />
         </Box>
 
@@ -128,6 +145,8 @@ const ProfileEdit = () => {
             name="password"
             icon={<Lock />}
             type={reveal ? "text" : "password"}
+            value={passwordVal}
+            onChange={(event) => setPassworVal(event.target.value)}
           />
 
           <Button
@@ -136,7 +155,7 @@ const ProfileEdit = () => {
           />
 
           <Box align="center" justify="center">
-            {passwordVal && <StatusGood />}
+            {password && <StatusGood />}
           </Box>
         </Box>
         <Box align="center" pad="small">
