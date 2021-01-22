@@ -1,6 +1,6 @@
 import { Avatar, Box, Stack, Text, Sidebar } from "grommet";
 
-import { Achievement, MailOption, Phone, List, Location } from "grommet-icons";
+import { MailOption, Phone, List, Location } from "grommet-icons";
 
 import { Container, BoxInfo } from "./style";
 
@@ -14,11 +14,11 @@ const SidebarHeader = ({ image, name }) => (
   </Box>
 );
 
-const MainNavigation = ({ score, email, phone, interests, location }) => (
+const MainNavigation = ({ email, phone, lastName, location }) => (
   <Box gap="large" responsive={false} align="start">
     <BoxInfo>
-      <Achievement />
-      {score} ryu
+      <List />
+      {lastName}
     </BoxInfo>
     <BoxInfo>
       <MailOption />
@@ -27,10 +27,6 @@ const MainNavigation = ({ score, email, phone, interests, location }) => (
     <BoxInfo>
       <Phone />
       {phone}
-    </BoxInfo>
-    <BoxInfo>
-      <List />
-      {interests}
     </BoxInfo>
     <BoxInfo>
       <Location />
