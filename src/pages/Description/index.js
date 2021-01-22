@@ -5,16 +5,17 @@ import { motion } from "framer-motion";
 import FooterAll from "../../components/Footer";
 import React from "react";
 import { Carousel, Box, Image } from "grommet";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
+import wishesCartThunk from "../../store/modules/myWishes/thunks";
 
 const Description = () => {
   const history = useHistory();
-  // const checkToken = useSelector((state) => state.loginData.token);
+  const dispatch = useDispatch();
+  const [addButton, setAddButton] = useState(false);
   const localToken = localStorage.getItem("authToken");
-
+  let decoded = jwt_decode(localToken);
   const productItem = useSelector((state) => state.product);
 
   useEffect(() => {
@@ -23,25 +24,10 @@ const Description = () => {
     }
   }, [localToken]);
 
-  // const EuQuero = (produto, id) => {
-  //   // Pegar ID pelo Token
-  //   let decoded = jwt_decode(localToken);
-
-  //   // Pegar objeto do State Global - pegar o produto com useSelector no State Global(Product)
-  //   const donationsList = useSelector((state) => state.product);
-
-  //   // Requisição para armazenar objeto no cart e Enviar objeto pro cart
-  //   // https://api-capstone-grupo04.herokuapp.com/cart, {Product}
-
-  //   axios
-  //     .post("https://api-capstone-grupo04.herokuapp.com/cart", {
-  //       product: produto,
-  //       id: id,
-  //     })
-  //     .then((res) => console.log("deu boa"));
-
-  //   // Analisar o envio de dados do produto/id para a API
-  // };
+  const EuQuero = (produto, id) => {
+    dispatch(wishesCartThunk(produto, id));
+    setAddButton(true);
+  };
 
   return (
     <motion.div
@@ -54,30 +40,42 @@ const Description = () => {
         <HeaderAll />
 
         <Body>
-          <h1>{productItem.nome}</h1>
-          <section>
-            <p>Termina em 01/01/2222</p>
-          </section>
-
-          <Box height="medium" width="large" overflow="hidden">
+          <h1>
+            {productItem.type} - {productItem.brand}
+          </h1>
+          <Box height="large" width="large" overflow="hidden">
             <Carousel fill>
-              {productItem.imagem ? (
-                <img
-                  style={{ width: "100%", height: "100%" }}
-                  src={productItem.imagem}
-                  alt={`Foto ${productItem.nome}`}
-                />
-              ) : (
-                <h1>Sem foto</h1>
-              )}
+              <Image fit="cover" src={productItem.side} />
+              <Image fit="cover" src={productItem.frontSide} />
+              <Image fit="cover" src={productItem.backSide} />
             </Carousel>
           </Box>
 
           <StyledDescription>
-            <p>{productItem.descricao}</p>
-            <h3>Estado da doação: {productItem.estado}</h3>
-            {/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
+            <div>
+              <p>
+                <p style={{ color: "red" }}>
+                  Esta doação termina em {productItem.date}
+                </p>
+                <p>
+                  <b> Tamanho: </b> {productItem.size}
+                </p>
+                <p>
+                  <b>Descrição do Item:</b> {productItem.description}
+                </p>
+                <p>
+                  <b> Estado da doação:</b> {productItem.donationState}
+                </p>
+              </p>
+            </div>
+
             <ButtonDiv>
+              <button
+                onClick={() => EuQuero(productItem, decoded)}
+                // style={{ width: "40%", height: "7vh" }}
+              >
+                Eu quero!
+              </button>
               <button
                 onClick={() => history.push("/feed")}
                 style={{
@@ -86,12 +84,7 @@ const Description = () => {
               >
                 Voltar
               </button>
-              <button
-              // onClick={() => EuQuero({ nome: "chave" }, 9)}
-              // style={{ width: "40%", height: "7vh" }}
-              >
-                Eu quero!
-              </button>
+              {addButton && <span>Item adicionado. Boa sorte!</span>}
             </ButtonDiv>
           </StyledDescription>
         </Body>

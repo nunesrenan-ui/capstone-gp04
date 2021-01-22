@@ -55,7 +55,7 @@ const ProfileTabs = ({ userId, token }) => {
         </Tab>
         <Tab title="Meu Carrinho">
           <Box margin="none" pad="large" align="center" background="accent-1">
-            <div>hello</div>
+            <Cart />
           </Box>
         </Tab>
       </Tabs>
