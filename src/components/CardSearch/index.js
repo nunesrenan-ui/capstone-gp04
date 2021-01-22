@@ -24,9 +24,9 @@ const CardSearch = () => {
     setInputValue(event.target.value);
   };
 
-  // const findProduct = productsData.filter((item) =>
-  //   item.nome.toLowerCase().includes(inputValue)
-  // );
+  const findProduct = productsData.filter((item) =>
+    item.nome.toLowerCase().includes(inputValue)
+  );
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -61,7 +61,7 @@ const CardSearch = () => {
           }
         />
         <CardsContainer>
-          {productsData.map((value, index) => (
+          {findProduct.map((value, index) => (
             <CardItem
               key={index}
               descricao={value.descricao}
@@ -72,6 +72,17 @@ const CardSearch = () => {
           ))}
         </CardsContainer>
       </DivContainer>
+      <CardsContainer>
+        {findProduct.map((value, index) => (
+          <CardItem
+            key={index}
+            descricao={value.descricao}
+            nome={value.nome}
+            imagem={value.imagem}
+            info={() => moreInfo(value)}
+          />
+        ))}
+      </CardsContainer>
     </>
   );
 };

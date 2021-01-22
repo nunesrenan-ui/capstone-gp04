@@ -96,9 +96,6 @@ const Description = () => {
           </StyledDescription>
         </Body>
 
-        {/* <Similares>
-          <h2>Produtos Similares:</h2>
-        </Similares> */}
         <FooterAll></FooterAll>
       </Container>
     </motion.div>
