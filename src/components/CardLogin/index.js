@@ -32,6 +32,7 @@ const UserLogin = () => {
       })
       .then((res) => {
         localStorage.setItem("authToken", JSON.stringify(res.data.accessToken));
+        localStorage.setItem("cart", "");
         dispatch(dataLoginThunk(res.data));
         history.push("/feed");
       })
