@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
   height: 100vh;
   background-image: linear-gradient(#ffc15e, #f5ff90, #d6ffb7);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; ;
 `;
 
 export const Body = styled.div`
   width: 50%;
-  height: 80%;
+  height: 85%;
   background-color: white;
   border-radius: 50px;
   display: flex;
@@ -20,32 +21,18 @@ export const Body = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 3%;
-  margin: 5% 0;
+  margin: 2% 0;
 
   img {
     border-radius: 50px;
-    /* max-width: auto;
-    max-height: 100%; */
-    max-width: 60%;
-    height: 100%;
+    /* max-width: 60%; */
+    /* max-height: fit-content; */
   }
 
   h1 {
     color: #ff9f1c;
-    margin: 1%;
-  }
-
-  section {
-    width: 50%;
-    height: 4%;
-    border-radius: 50px;
-    background-color: gray;
-    opacity: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: fit-content;
-    margin: 2%;
+    margin: 0.5%;
+    font-size: 3em;
   }
 `;
 
@@ -66,22 +53,24 @@ export const StyledDescription = styled.div`
   width: fit-content;
   height: fit-content;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 2%;
 
-    p {
-      width: 90%;
-      height: fit-content;
-      margin: 3%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  p {
+    width: 20vw;
+    height: fit-content;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    div {
-      background-color: white;
-    }
+  div {
+    background-color: white;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -95,7 +84,7 @@ export const ButtonDiv = styled.div`
 
   button {
     width: 20vh;
-    height: 7vh;
+    height: 5vh;
     border: none;
     text-align: center;
     background-color: #ff9f1c;
