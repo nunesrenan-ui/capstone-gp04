@@ -96,6 +96,11 @@ export const AboutGiver = () => {
           Gostou e quer saber mais? Então vem com a gente e torne-se um Giver!
         </p>
         <br />
+<<<<<<< HEAD
+        <p>
+          <a href="cadastro">Clique aqui</a> e cadastre-se pra não perder
+          nenhuma oportunidade!
+=======
 
         <p className="containerWithModal">
           <ClickMeRegister
@@ -106,6 +111,7 @@ export const AboutGiver = () => {
             <CardRegister />
           </ClickMeRegister>{" "}
           <span>e cadastre-se pra não perder nenhuma oportunidade!</span>
+>>>>>>> develop2.0
         </p>
       </div>
     </div>

@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 95%;
-  min-height: 95vh;
+  height: 90%;
   background-image: linear-gradient(#ffc15e, #f5ff90, #d6ffb7);
   display: flex;
   flex-direction: column;
@@ -11,9 +10,9 @@ export const Container = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  width: 80%;
+  height: fit-content;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 90vh;
   flex-wrap: wrap;
 `;
