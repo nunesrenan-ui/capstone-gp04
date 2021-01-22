@@ -18,9 +18,9 @@ const CardSearch = () => {
     category: "",
   });
 
-  const { active, category } = buttonCategory;
+  /* const { active, category } = buttonCategory; */
 
-  const onChange = (event) => {
+  const onchange = (event) => {
     setInputValue(event.target.value);
   };
 
@@ -42,13 +42,13 @@ const CardSearch = () => {
   );
 
   const findFiltered = setFilter.filter((item) =>
-    item.nome.toLowerCase().includes(inputValue)
+    item.type.toLowerCase().includes(inputValue)
   ); */
 
   return (
     <>
       <DivContainer>
-        <CardInput value={inputValue} onChange={onChange} />
+        <CardInput value={inputValue} onChange={onchange} />
         <CardCategory
           onClickEletronic={() =>
             setButtonCategory({ active: true, category: "Eletrônicos" })
