@@ -63,34 +63,32 @@ const Description = () => {
             <Carousel fill>
               {productItem.imagem ? (
                 <img
+                  style={{ width: "100%", height: "100%" }}
                   src={productItem.imagem}
                   alt={`Foto ${productItem.nome}`}
                 />
               ) : (
                 <h1>Sem foto</h1>
               )}
-              <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
-              <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
             </Carousel>
           </Box>
 
           <StyledDescription>
             <p>{productItem.descricao}</p>
             <h3>Estado da doação: {productItem.estado}</h3>
-{/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
+            {/* ajustar tamanho dos botões voltar e eu quero: cada item mostra um tamanho diferente */}
             <ButtonDiv>
               <button
+                onClick={() => history.push("/feed")}
                 style={{
-                  width: "30%",
-                  fontSize: "20px",
                   backgroundColor: "gray",
                 }}
               >
                 Voltar
               </button>
               <button
-                // onClick={() => EuQuero({ nome: "chave" }, 9)}
-                style={{ width: "40%", height: "7vh" }}
+              // onClick={() => EuQuero({ nome: "chave" }, 9)}
+              // style={{ width: "40%", height: "7vh" }}
               >
                 Eu quero!
               </button>

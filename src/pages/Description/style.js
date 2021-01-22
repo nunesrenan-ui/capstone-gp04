@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Body = styled.div`
-  width: 60%;
+  width: 50%;
   height: 80%;
   background-color: white;
   border-radius: 50px;
@@ -24,6 +24,10 @@ export const Body = styled.div`
 
   img {
     border-radius: 50px;
+    /* max-width: auto;
+    max-height: 100%; */
+    max-width: 60%;
+    height: 100%;
   }
 
   h1 {
@@ -90,22 +94,15 @@ export const ButtonDiv = styled.div`
   margin-bottom: 3%;
 
   button {
-    width: 10vw;
-    height: 4vh;
+    width: 20vh;
+    height: 7vh;
     border: none;
     text-align: center;
     background-color: #ff9f1c;
     color: white;
     border-radius: 50px;
-    font-size: 1.5em;
+    font-size: 2em;
     margin: 1%;
     cursor: pointer;
   }
 `;
-
-// export const Similares = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   color: #ff9f1c;
-//   height: fit-content;
-// `;

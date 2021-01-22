@@ -10,8 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  height: 370px;
-  width: 300px;
+  height: 420px;
+  width: 210px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   border-radius: 50px;
@@ -21,6 +21,7 @@ export const Card = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin: 1%;
+  cursor: pointer;
 `;
 
 export const CardImage = styled.div`
@@ -46,7 +47,7 @@ export const CardBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
 
   h2 {
     font-size: 1.5em;
@@ -59,7 +60,7 @@ export const CardBody = styled.div`
   }
 
   button {
-    margin-top: 12%;
+    /* margin-top: 12%; */
     background-color: #ff9f1c;
     padding: 8px;
     border-radius: 20px;

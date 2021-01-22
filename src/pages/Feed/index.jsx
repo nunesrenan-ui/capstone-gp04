@@ -38,11 +38,10 @@ const Feed = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
     >
+      <HeaderAll />
       <Container>
-        <HeaderAll />
         <CardSearch />
         <CardContainer></CardContainer>
-        <FooterAll />
       </Container>
       <FooterAll />
     </motion.div>
